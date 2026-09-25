@@ -7,7 +7,7 @@
 <meta name="description" content="Real estate analyst focused on acquisitions and development in Los Angeles.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
     --stone: #EEF0EB;      /* page */
@@ -17,7 +17,7 @@
     --green: #1F3A32;      /* bottle green, primary */
     --brass: #9A7B3F;      /* accent, used sparingly */
     --rule: #CDD2CA;       /* hairlines */
-    --serif: "Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
+    --serif: "Cormorant Garamond", "Garamond", Georgia, serif;
     --sans: "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
     --wrap: 68rem;
   }
@@ -50,7 +50,7 @@
     border-bottom: 1px solid var(--rule);
   }
   .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 4rem; }
-  .nav-name { font-family: var(--serif); font-size: 1.1rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); text-decoration: none; }
+  .nav-name { font-family: var(--serif); font-weight: 600; font-size: 1.15rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); text-decoration: none; }
   .nav ul { display: flex; gap: 1.75rem; list-style: none; margin: 0; padding: 0; }
   .nav ul a { color: var(--muted); text-decoration: none; font-size: 0.95rem; font-weight: 500; }
   .nav ul a:hover { color: var(--green); }
@@ -59,10 +59,10 @@
   .hero { padding: 7rem 0 5rem; }
   .hero h1 {
     font-family: var(--serif);
-    font-weight: 400;
+    font-weight: 500;
     font-size: clamp(3rem, 8vw, 6.25rem);
     line-height: 0.98;
-    letter-spacing: 0.01em;
+    letter-spacing: 0.03em;
     text-transform: uppercase;
     margin: 0 0 2rem;
     color: var(--green);
@@ -83,7 +83,7 @@
   /* Section headings */
   section { padding: 4.5rem 0; border-top: 1px solid var(--rule); }
   .section-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
-  h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(2rem, 4vw, 2.75rem); margin: 0; letter-spacing: -0.01em; }
+  h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(2rem, 4vw, 2.75rem); margin: 0; letter-spacing: -0.01em; }
   .section-note { color: var(--muted); font-size: 0.95rem; margin: 0; }
 
   /* Deal rows: the signature element */
@@ -98,7 +98,7 @@
   .deal summary::-webkit-details-marker { display: none; }
   .deal summary:hover .address { color: var(--brass); }
   .address {
-    font-family: var(--serif); font-weight: 400;
+    font-family: var(--serif); font-weight: 500;
     font-size: clamp(1.6rem, 3.2vw, 2.25rem); line-height: 1.1;
     margin: 0 0 0.5rem; color: var(--green); transition: color 0.2s;
   }
@@ -143,7 +143,7 @@
   .about { display: grid; grid-template-columns: 1.1fr 1fr; gap: 4rem; }
   .about p { max-width: 58ch; margin: 0 0 1.25rem; }
   .facts h3 {
-    font-family: var(--serif); font-weight: 400; font-size: 1.35rem;
+    font-family: var(--serif); font-weight: 500; font-size: 1.35rem;
     margin: 0 0 0.75rem; color: var(--green);
   }
   .facts dl { margin: 0 0 2.25rem; }
@@ -158,7 +158,7 @@
   /* Contact */
   .contact { padding-bottom: 6rem; }
   .contact p.big {
-    font-family: var(--serif); font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    font-family: var(--serif); font-weight: 500; font-size: clamp(1.75rem, 3.5vw, 2.5rem);
     line-height: 1.2; max-width: 22ch; margin: 0 0 2rem;
   }
   footer { border-top: 1px solid var(--rule); padding: 2rem 0; color: var(--muted); font-size: 0.9rem; }
@@ -233,10 +233,11 @@
         <div class="facts">
           <h3>Experience</h3>
           <dl>
-            <div class="row"><dt>Roshan Realty<span>Pune, India</span></dt><dd></dd></div>
-            <div class="row"><dt>S.K. Associates<span>Pune, India</span></dt><dd></dd></div>
-            <div class="row"><dt>Rahul Construction<span>Pune, India</span></dt><dd></dd></div>
-            <div class="row"><dt>Teaching assistant, USC<span>RED 547 and RED 200</span></dt><dd>2026</dd></div>
+            <div class="row"><dt>Project Destined<span>Real Estate Private Equity Intern, Remote</span></dt><dd>2026</dd></div>
+            <div class="row"><dt>University of Southern California<span>Course Teaching Assistant, RED 547 and RED 200</span></dt><dd>2026&ndash;Present</dd></div>
+            <div class="row"><dt>Roshan Realty<span>Real Estate Analyst, Pune</span></dt><dd>2024&ndash;2025</dd></div>
+            <div class="row"><dt>Rahul Construction<span>Real Estate Analyst Intern, Pune</span></dt><dd>2024</dd></div>
+            <div class="row"><dt>S.K. Associates<span>Project Coordinator Intern, Pune</span></dt><dd>2023</dd></div>
           </dl>
 
           <h3>Education</h3>
@@ -249,8 +250,8 @@
           <h3>Affiliations</h3>
           <dl>
             <div class="row"><dt>Urban Land Institute<span>Los Angeles</span></dt><dd></dd></div>
-            <div class="row"><dt>Trojan Real Estate Association</dt><dd></dd></div>
-            <div class="row"><dt>CMAA, USC Chapter</dt><dd></dd></div>
+            <div class="row"><dt>Trojan Real Estate Association<span>Los Angeles</span></dt><dd></dd></div>
+            <div class="row"><dt>CMAA, USC Chapter<span>Los Angeles</span></dt><dd></dd></div>
           </dl>
         </div>
       </div>
