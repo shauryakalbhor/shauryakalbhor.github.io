@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2051 E Maple Ave | Underwriting Dashboard | Shaurya Kalbhor</title>
+<meta name="description" content="Interactive underwriting for a value-add industrial building in El Segundo, CA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --stone:#EEF0EB; --paper:#F7F8F5; --ink:#1C221F; --muted:#5C665F;
+    --green:#1F3A32; --brass:#9A7B3F; --rule:#CDD2CA; --neg:#8C5A4A;
+    --serif:"Cormorant Garamond","Garamond",Georgia,serif;
+    --sans:"Hanken Grotesk","Helvetica Neue",Arial,sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;background:var(--stone);color:var(--ink);font-family:var(--sans);font-size:1rem;line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:var(--green);text-underline-offset:.2em;text-decoration-thickness:1px}
+  a:hover{color:var(--brass)}
+  :focus-visible{outline:2px solid var(--brass);outline-offset:3px;border-radius:2px}
+  .wrap{max-width:74rem;margin:0 auto;padding:0 1.5rem}
+  .top{border-bottom:1px solid var(--rule)}
+  .top .wrap{display:flex;justify-content:space-between;align-items:center;height:3.75rem}
+  .home{font-family:var(--serif);font-weight:600;font-size:1.1rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);text-decoration:none}
+  .top nav{display:flex;gap:1.5rem;font-size:.93rem}
+  .top nav a{color:var(--muted);text-decoration:none;font-weight:500;white-space:nowrap}
+  .top nav a:hover{color:var(--green)}
+  header.intro{padding:3.5rem 0 2rem}
+  h1{font-family:var(--serif);font-weight:500;font-size:clamp(2.4rem,5vw,3.6rem);line-height:1.02;margin:0 0 .75rem;color:var(--green);letter-spacing:-.01em}
+  .lede{max-width:58ch;color:var(--muted);margin:0}
+  .layout{display:grid;grid-template-columns:20rem 1fr;gap:2.5rem;padding-bottom:4rem;align-items:start}
+  aside{position:sticky;top:1.25rem;background:var(--paper);border:1px solid var(--rule);padding:1.5rem}
+  aside h2,.panel h2{font-family:var(--serif);font-weight:500;font-size:1.45rem;margin:0 0 1rem;color:var(--green)}
+  .field{margin-bottom:1.15rem}
+  .field label{display:flex;justify-content:space-between;align-items:baseline;font-size:.9rem;font-weight:500;margin-bottom:.35rem}
+  .field output{font-variant-numeric:tabular-nums;color:var(--green);font-weight:600}
+  input[type=range]{width:100%;accent-color:var(--green);margin:0}
+  .hint{font-size:.78rem;color:var(--muted);margin-top:.15rem}
+  .group{border-top:1px solid var(--rule);padding-top:1rem;margin-top:1.25rem}
+  .btn{display:inline-block;margin-top:.5rem;padding:.6rem 1.1rem;font:500 .9rem var(--sans);border:1px solid var(--green);background:transparent;color:var(--green);border-radius:2px;cursor:pointer}
+  .btn:hover{background:var(--green);color:var(--paper)}
+  .panel{border-top:1px solid var(--ink);padding:1.5rem 0 2rem}
+  .panel:first-child{padding-top:0;border-top:0}
+  /* spread scale: the signature element */
+  .scale{position:relative;height:7.5rem;margin:2.25rem .5rem 1rem}
+  .track{position:absolute;left:0;right:0;top:3.4rem;height:2px;background:var(--rule)}
+  .zone{position:absolute;top:3.1rem;height:8px;background:rgba(31,58,50,.12)}
+  .tick{position:absolute;top:2.4rem;width:0;height:2.2rem;border-left:2px solid var(--green)}
+  .tick span{position:absolute;top:-2.1rem;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:.8rem;color:var(--muted)}
+  .tick.rate{border-left-color:var(--brass)}
+  .tick.rate span{top:2.45rem}
+  .dot{position:absolute;top:2.95rem;width:1.1rem;height:1.1rem;margin-left:-.55rem;border-radius:50%;background:var(--green);border:3px solid var(--paper);box-shadow:0 0 0 1px var(--green);transition:left .25s ease}
+  .dot.bad{background:var(--neg);box-shadow:0 0 0 1px var(--neg)}
+  .dot b{position:absolute;top:1.6rem;left:50%;transform:translateX(-50%);white-space:nowrap;font-family:var(--serif);font-size:1.45rem;font-weight:600;color:var(--ink)}
+  .axis{position:absolute;top:6.4rem;left:0;right:0;display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted);font-variant-numeric:tabular-nums}
+  @media (prefers-reduced-motion:reduce){.dot{transition:none}}
+  .verdict{font-family:var(--serif);font-size:1.35rem;line-height:1.35;max-width:46ch;margin:1.5rem 0 0}
+  .note{color:var(--muted);font-size:.92rem;margin:.5rem 0 0;max-width:62ch}
+  table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+  th,td{padding:.6rem .25rem;border-bottom:1px solid var(--rule);text-align:right}
+  th:first-child,td:first-child{text-align:left}
+  thead th{font-size:.82rem;font-weight:600;color:var(--muted);border-bottom:1px solid var(--ink)}
+  td.key{font-weight:600;color:var(--green)}
+  .twocol{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+  .price{font-family:var(--serif);font-size:2.2rem;font-weight:600;color:var(--green);margin:.25rem 0 0;font-variant-numeric:lining-nums}
+  svg text{font-family:var(--sans);font-size:11px;fill:var(--muted)}
+  .links{display:flex;gap:1.5rem;flex-wrap:wrap;font-weight:500}
+  footer{border-top:1px solid var(--rule);padding:1.5rem 0 2.5rem;color:var(--muted);font-size:.85rem}
+  @media (max-width:520px){
+    .home{font-size:.95rem;white-space:nowrap}
+    .top nav{gap:1rem;font-size:.85rem}
+    .top nav a.hide-sm{display:none}
+  }
+  @media (max-width:880px){
+    .layout{grid-template-columns:1fr}
+    aside{position:static}
+    .twocol{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+<div class="top"><div class="wrap">
+  <a class="home" href="../../index.html">Shaurya Kalbhor</a>
+  <nav aria-label="Project"><a href="2051_E_Maple_Memo.pdf">Memo</a><a href="2051_E_Maple_Underwriting.xlsx">Excel model</a><a class="hide-sm" href="../../index.html#work">All work</a></nav>
+</div></div>
+
+<main class="wrap">
+  <header class="intro">
+    <h1>2051 E Maple Ave, El Segundo</h1>
+    <p class="lede">A vacant 32,081 SF industrial building listed at $10.8M. Change the assumptions to see when renovating and re-leasing it actually creates value.</p>
+  </header>
+
+  <div class="layout">
+    <aside aria-label="Assumptions">
+      <h2>Assumptions</h2>
+      <form id="f" oninput="update()">
+        <div class="field"><label for="price">Purchase price <output id="o-price"></output></label>
+          <input type="range" id="price" min="7500000" max="11500000" step="100000" value="10800000"><div class="hint">Asking price $10.8M</div></div>
+        <div class="field"><label for="rent">Renovated rent ($/SF/mo NNN) <output id="o-rent"></output></label>
+          <input type="range" id="rent" min="1.60" max="2.60" step="0.05" value="2.00"><div class="hint">Comps average $1.98</div></div>
+        <div class="field"><label for="exitCap">Exit cap rate <output id="o-exitCap"></output></label>
+          <input type="range" id="exitCap" min="0.050" max="0.070" step="0.0025" value="0.06"></div>
+        <div class="field"><label for="renoPSF">Renovation cost ($/SF) <output id="o-renoPSF"></output></label>
+          <input type="range" id="renoPSF" min="30" max="100" step="5" value="50"><div class="hint">Plus 10% contingency</div></div>
+        <div class="field"><label for="leaseUp">Lease-up after renovation <output id="o-leaseUp"></output></label>
+          <input type="range" id="leaseUp" min="3" max="12" step="1" value="6"></div>
+        <div class="field"><label for="rate">Loan interest rate <output id="o-rate"></output></label>
+          <input type="range" id="rate" min="0.05" max="0.08" step="0.00125" value="0.0625"><div class="hint">55% loan-to-cost, interest-only</div></div>
+        <div class="group field"><label for="target">Target yield on cost <output id="o-target"></output></label>
+          <input type="range" id="target" min="0.055" max="0.08" step="0.0025" value="0.065"></div>
+        <button type="button" class="btn" onclick="resetAll()">Reset to base case</button>
+      </form>
+    </aside>
+
+    <section aria-label="Results">
+      <div class="panel">
+        <h2>Does the renovation create value?</h2>
+        <div class="scale" aria-hidden="true">
+          <div class="track"></div>
+          <div class="zone" id="zone"></div>
+          <div class="tick" id="t-cap"><span id="l-cap"></span></div>
+          <div class="tick rate" id="t-rate"><span id="l-rate"></span></div>
+          <div class="dot" id="dot"><b id="l-yoc"></b></div>
+          <div class="axis"><span>4.0%</span><span>5.0%</span><span>6.0%</span><span>7.0%</span><span>8.0%</span><span>9.0%</span></div>
+        </div>
+        <p class="verdict" id="verdict" aria-live="polite"></p>
+        <p class="note" id="lev"></p>
+      </div>
+
+      <div class="panel twocol">
+        <div>
+          <h2>Returns</h2>
+          <table>
+            <thead><tr><th></th><th>Unlevered</th><th>Levered</th></tr></thead>
+            <tbody>
+              <tr><td>IRR</td><td class="key" id="uIRR"></td><td class="key" id="lIRR"></td></tr>
+              <tr><td>Equity multiple</td><td id="uEM"></td><td id="lEM"></td></tr>
+              <tr><td>Profit</td><td id="uP"></td><td id="lP"></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <h2>The deal</h2>
+          <table>
+            <tbody>
+              <tr><td>Total project cost</td><td id="cost"></td></tr>
+              <tr><td>Stabilized NOI</td><td id="noi"></td></tr>
+              <tr><td>Exit value (year 5)</td><td id="exit"></td></tr>
+              <tr><td>Peak equity</td><td id="eq"></td></tr>
+              <tr><td>DSCR at stabilization</td><td id="dscr"></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>What should we pay?</h2>
+        <p class="note" style="margin-top:0">Maximum price that still reaches the target yield on cost, at the rent and costs set on the left.</p>
+        <p class="price" id="maxp"></p>
+        <p class="note" id="maxp-note"></p>
+      </div>
+
+      <div class="panel">
+        <h2>Levered cash flow by year</h2>
+        <svg id="chart" viewBox="0 0 640 270" role="img" aria-label="Annual levered cash flow, closing through year 5" style="width:100%;height:auto"></svg>
+        <p class="note">Closing funds the purchase; years 1 and 2 fund renovation, leasing and interest; year 5 includes the sale and loan payoff.</p>
+      </div>
+
+      <div class="panel links">
+        <a href="2051_E_Maple_Memo.pdf">Read the investment memo</a>
+        <a href="2051_E_Maple_Underwriting.xlsx">Download the Excel model</a>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer><div class="wrap">This dashboard runs the same monthly cash flow as the Excel model; the base case matches it exactly. Fixed assumptions: 5-year hold, 5-year NNN lease with 3 months free and 3.5% annual increases, 5% vacancy, 55% loan-to-cost. Figures are illustrative and based on public listing data from September 2026.</div></footer>
+
+<script>
+function runModel(x){
+  var S=32081,k=0.02,cont=0.10,rm=6,g=0.035,term=60,free=3,ti=10,lc=0.05,tax=0.012,ins=0.75,mnt=0.75,
+      mg=0.03,res=0.15,vac=0.05,ltc=0.55,lf=0.01,hold=60,sc=0.02;
+  var P=x.price,rent=x.rent,ec=x.exitCap,ir=x.rate,lu=x.leaseUp,reno=x.renoPSF*S*(1+cont);
+  var LS=rm+lu+1,RS=LS+free;
+  var opex=(P*tax/S+ins+mnt)/12, LC=lc*rent*S*term, TI=ti*S, carry=opex*S*(LS-1);
+  var cost=P*(1+k)+reno+TI+LC+carry, loan=cost*ltc, fee=loan*lf;
+  function noi(m){
+    var ly=m<LS?0:Math.floor((m-LS)/12)+1;
+    var r=m>=RS?rent*S*Math.pow(1+g,ly-1):0, re=m>=LS?opex*S:0;
+    return (r+re)*(1-vac)-opex*S-r*mg;
+  }
+  var u=[-P*(1+k)], l=[u[0]+loan-fee], sale=0;
+  for(var m=1;m<=hold;m++){
+    var cap=(m<=rm?-reno/rm:0)+(m===LS?-TI-LC:0)-res*S/12;
+    var s=m===hold?noi(m+1)*12/ec*(1-sc):0; if(s) sale=s;
+    var cf=noi(m)+cap+s; u.push(cf); l.push(cf-loan*ir/12-(m===hold?loan:0));
+  }
+  function xirr(c){
+    var d0=Date.UTC(2027,8,1), t=c.map(function(_,i){return (Date.UTC(2027,8+i,1)-d0)/864e5/365;});
+    var lo=-0.99,hi=3,mid=0;
+    for(var it=0;it<200;it++){mid=(lo+hi)/2;var v=0;for(var i=0;i<c.length;i++)v+=c[i]/Math.pow(1+mid,t[i]);if(v>0)lo=mid;else hi=mid;}
+    return mid;
+  }
+  function sum(a){return a.reduce(function(p,q){return p+q;},0);}
+  function mult(a){var pos=0,neg=0;a.forEach(function(v){if(v>0)pos+=v;else neg-=v;});return pos/neg;}
+  var cum=0,minCum=0; l.forEach(function(v){cum+=v;if(cum<minCum)minCum=cum;});
+  var stabNOI=noi(RS)*12, yoc=stabNOI/cost;
+  var I=ins+mnt, N=LS-1, y=x.target;
+  var maxP=(12*rent*S*(1-vac-mg)-vac*I*S-y*(reno+TI+LC+I*S*N/12))/(y*(1+k+tax*N/12)+vac*tax);
+  var years=[l[0]]; for(var yr=1;yr<=5;yr++){years.push(sum(l.slice(12*(yr-1)+1,12*yr+1)));}
+  return {cost:cost,loan:loan,stabNOI:stabNOI,yoc:yoc,spread:yoc-ec,exitValue:noi(hold+1)*12/ec,sale:sale,
+    uIRR:xirr(u),lIRR:xirr(l),uProfit:sum(u),lProfit:sum(l),uEM:mult(u),lEM:mult(l),peakEq:-minCum,
+    dscr:stabNOI/(loan*ir),maxPrice:maxP,years:years};
+}
+
+
+var BASE={price:10800000,rent:2.00,exitCap:0.06,renoPSF:50,leaseUp:6,rate:0.0625,target:0.065};
+var ASK=10800000, LO=0.04, HI=0.09;
+function $(id){return document.getElementById(id);}
+function pct(v,d){return (v*100).toFixed(d===undefined?1:d)+'%';}
+function mil(v){var s=v<0?'-':'';return s+'$'+(Math.abs(v)/1e6).toFixed(2)+'M';}
+function usd(v){return (v<0?'-$':'$')+Math.round(Math.abs(v)).toLocaleString('en-US');}
+function pos(v){return Math.max(0,Math.min(1,(v-LO)/(HI-LO)))*100+'%';}
+function read(){var x={};for(var k in BASE)x[k]=parseFloat($(k).value);return x;}
+function update(){
+  var x=read(), r=runModel(x);
+  $('o-price').textContent=mil(x.price); $('o-rent').textContent='$'+x.rent.toFixed(2);
+  $('o-exitCap').textContent=pct(x.exitCap,2); $('o-renoPSF').textContent='$'+x.renoPSF;
+  $('o-leaseUp').textContent=x.leaseUp+' months'; $('o-rate').textContent=pct(x.rate,2); $('o-target').textContent=pct(x.target,2);
+  $('t-cap').style.left=pos(x.exitCap); $('l-cap').textContent='Exit cap '+pct(x.exitCap,2);
+  $('t-rate').style.left=pos(x.rate); $('l-rate').textContent='Loan rate '+pct(x.rate,2);
+  $('dot').style.left=pos(r.yoc); $('l-yoc').textContent=pct(r.yoc,2);
+  $('dot').classList.toggle('bad',r.yoc<x.exitCap);
+  $('zone').style.left=pos(x.exitCap); $('zone').style.width=(parseFloat(pos(HI))-parseFloat(pos(x.exitCap)))+'%';
+  var bps=Math.round(r.spread*10000), v;
+  if(bps<0) v='No. The renovated building yields '+pct(r.yoc,2)+' on cost, '+(-bps)+' bps below the exit cap, so it would sell for less than it cost to create.';
+  else if(bps<50) v='Barely. Yield on cost beats the exit cap by only '+bps+' bps, a thin cushion for renovation and lease-up risk.';
+  else v='Yes. Yield on cost clears the exit cap by '+bps+' bps, enough margin to pay for the risk of renovating and re-leasing.';
+  $('verdict').textContent=v;
+  $('lev').textContent=r.yoc<x.rate?'Leverage hurts here: the loan costs '+pct(x.rate,2)+' while the property yields '+pct(r.yoc,2)+', so borrowing lowers the return on equity.'
+    :'Leverage helps here: the property yields more than the loan costs, so borrowing raises the return on equity.';
+  $('uIRR').textContent=pct(r.uIRR); $('lIRR').textContent=pct(r.lIRR);
+  $('uEM').textContent=r.uEM.toFixed(2)+'x'; $('lEM').textContent=r.lEM.toFixed(2)+'x';
+  $('uP').textContent=mil(r.uProfit); $('lP').textContent=mil(r.lProfit);
+  $('cost').textContent=usd(r.cost); $('noi').textContent=usd(r.stabNOI); $('exit').textContent=usd(r.exitValue);
+  $('eq').textContent=usd(r.peakEq); $('dscr').textContent=r.dscr.toFixed(2)+'x';
+  $('maxp').textContent=usd(r.maxPrice);
+  var d=r.maxPrice/ASK-1;
+  $('maxp-note').textContent=(d<0?Math.round(-d*100)+'% below':Math.round(d*100)+'% above')+' the $10.8M asking price, or $'+Math.round(r.maxPrice/32081)+' per SF.';
+  chart(r.years);
+}
+function chart(ys){
+  var W=640,H=270,pad=40,top=20,bot=48,ch=H-top-bot,mx=Math.max.apply(null,ys.map(Math.abs))*1.1||1;
+  var maxv=Math.max(0,Math.max.apply(null,ys)), minv=Math.min(0,Math.min.apply(null,ys)), span=(maxv-minv)||1;
+  function y(v){return top+(maxv-v)/span*ch;}
+  var bw=(W-pad*2)/ys.length, s='<line x1="'+pad+'" x2="'+(W-pad)+'" y1="'+y(0)+'" y2="'+y(0)+'" stroke="#1C221F" stroke-width="1"/>';
+  ys.forEach(function(v,i){
+    var x=pad+i*bw+bw*0.2, w=bw*0.6, y0=y(Math.max(v,0)), h=Math.abs(y(v)-y(0));
+    s+='<rect x="'+x+'" y="'+y0+'" width="'+w+'" height="'+Math.max(h,1)+'" fill="'+(v<0?'#8C5A4A':'#1F3A32')+'"/>';
+    var ly=v<0?y(v)+13:y0-5;
+    s+='<text x="'+(x+w/2)+'" y="'+ly+'" text-anchor="middle">'+mil(v)+'</text>';
+    s+='<text x="'+(x+w/2)+'" y="'+(H-10)+'" text-anchor="middle">'+(i===0?'Closing':'Year '+i)+'</text>';
+  });
+  $('chart').innerHTML=s;
+}
+function resetAll(){for(var k in BASE)$(k).value=BASE[k];update();}
+update();
+</script>
+</body>
+</html>
