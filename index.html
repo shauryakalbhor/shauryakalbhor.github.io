@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Shaurya Kalbhor | Real Estate Finance &amp; Development</title>
-<meta name="description" content="Shaurya Kalbhor: CRE acquisitions, underwriting and development. Deal work, a live underwriting model, and experience.">
+<meta name="description" content="Shaurya Kalbhor: commercial real estate acquisitions, underwriting and development. Selected deals, an interactive underwriting model and experience.">
 <meta property="og:title" content="Shaurya Kalbhor | Real Estate Finance & Development">
-<meta property="og:description" content="Deal work, a live underwriting model, and experience across acquisitions and development.">
+<meta property="og:description" content="Selected deals, an interactive underwriting model and experience across acquisitions and development.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%231f3a5f'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='16' text-anchor='middle' fill='%23f7f5f0'%3ESK%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -296,6 +296,14 @@ dialog::backdrop{background:rgba(26,31,43,.45)}
   .contact .wrap{padding-top:56px;padding-bottom:56px;gap:36px}
 }
 @media (max-width:480px){.nav a:not(.keep){display:none}}
+
+/* ---------- Page additions ---------- */
+.deals{grid-template-columns:1fr 1fr}
+.card.feat{grid-column:1/-1}
+dialog{margin:auto}
+.back{display:inline-block;font-size:14px;font-weight:500;color:var(--navy);margin-bottom:24px}
+.back:hover{text-decoration:underline;text-underline-offset:3px}
+@media (max-width:680px){.deals{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -304,9 +312,8 @@ dialog::backdrop{background:rgba(26,31,43,.45)}
   <div class="wrap">
     <a href="#top" class="brand">Shaurya Kalbhor</a>
     <nav class="nav" aria-label="Sections">
-      <a href="#deals">Deals</a>
-      <a href="#underwriting" class="keep">Underwriting</a>
-      <a href="#experience" class="opt">Experience</a>
+      <a href="#deals" class="keep">Deals</a>
+      <a href="#experience">Experience</a>
       <a href="#contact">Contact</a>
     </nav>
     <a class="btn btn-outline btn-sm" href="resume.pdf" target="_blank" rel="noopener">Resume</a>
@@ -315,171 +322,104 @@ dialog::backdrop{background:rgba(26,31,43,.45)}
 
 <main id="top">
   <div class="wrap">
-    <!-- Hero -->
     <div class="hero">
       <div>
-        <span class="avail"><i></i>Open to full-time analyst roles from June 2027</span>
+        <span class="avail"><i></i>Open to Full-Time Analyst Roles from June 2027</span>
         <h1>Shaurya Kalbhor</h1>
-        <p class="role">Real estate finance &amp; development</p>
-        <p class="lede">I underwrite acquisitions and development deals, from rent comps and renovation budgets to debt sizing and exit pricing. Before USC, I spent two years in commercial real estate in Pune, working on more than $50M of residential projects.</p>
+        <p class="role">Real Estate Finance &amp; Development</p>
+        <p class="lede">I underwrite acquisition and development deals, from rent comps and renovation budgets to debt sizing and exit pricing. Before USC, I spent two years in commercial real estate in Pune, working on more than $50M of residential projects.</p>
         <div class="cta">
-          <a href="#underwriting" class="btn btn-primary">View the underwriting</a>
+          <a href="#deals" class="btn btn-primary">View Selected Deals</a>
           <a href="https://www.linkedin.com/in/shauryakalbhor" target="_blank" rel="noopener" class="btn btn-outline">LinkedIn</a>
         </div>
       </div>
       <aside class="profile" aria-label="Profile summary">
-        <div class="profile-hd"><h2>At a glance</h2></div>
+        <div class="profile-hd"><h2>At a Glance</h2></div>
         <dl>
-          <dt>Education</dt><dd>MS Construction Management, University of Southern California</dd>
+          <dt>Education</dt><dd>MS in Construction Management, University of Southern California</dd>
           <dt>Graduating</dt><dd>May 2027 · GPA 3.5</dd>
-          <dt>Focus</dt><dd>Acquisitions, underwriting, development</dd>
-          <dt>Asset types</dt><dd>Industrial, multifamily, mixed-use, adaptive reuse</dd>
-          <dt>Based in</dt><dd>Los Angeles, CA</dd>
+          <dt>Focus</dt><dd>Acquisitions, Underwriting and Development</dd>
+          <dt>Asset Types</dt><dd>Industrial, Multifamily, Mixed-Use and Adaptive Reuse</dd>
+          <dt>Based In</dt><dd>Los Angeles, CA</dd>
         </dl>
       </aside>
     </div>
 
-    <!-- Metrics -->
     <div class="metrics-strip">
-      <div><b>$20M+</b><span>in investment decisions supported by my financial models</span></div>
-      <div><b>$22M+</b><span>of project acquisitions taken through due diligence</span></div>
-      <div><b>$2M</b><span>of exposure avoided by flagging regulatory risk on a land deal</span></div>
-      <div><b>400</b><span>residential units coordinated in a $12.2M+ development</span></div>
+      <div><b>$20M+</b><span>In investment decisions supported by my financial models</span></div>
+      <div><b>$22M+</b><span>Of project acquisitions taken through due diligence</span></div>
+      <div><b>$2M</b><span>Of exposure avoided by flagging regulatory risk on a land deal</span></div>
+      <div><b>400</b><span>Residential units coordinated in a $12.2M+ development</span></div>
     </div>
   </div>
 
-  <!-- Deals -->
   <section id="deals">
     <div class="wrap">
       <div class="sec-head reveal">
-        <div><div class="label">Selected work</div><h2>Deals &amp; underwriting</h2>
-          <p>Each deal is underwritten from scratch on a real property, ending in a model and a clear recommendation. Select a deal for details.</p></div>
+        <div><div class="label">Selected Work</div><h2>Deals &amp; Underwriting</h2>
+          <p>Each deal is underwritten from scratch on a real property and ends in a model and a clear recommendation. Select a deal to see the details.</p></div>
       </div>
-      <div class="tabs reveal" id="filters" role="tablist"></div>
       <div class="deals" id="dealGrid"></div>
     </div>
   </section>
 
-  <!-- Underwriting -->
-  <section id="underwriting">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <div><div class="label">Live model · Industrial value-add</div><h2>2051 E Maple Ave, El Segundo</h2></div>
-        <div class="cta" style="margin-top:0">
-          <a class="btn btn-outline btn-sm" href="2051_E_Maple_Underwriting.xlsx" download>Excel model</a>
-          <a class="btn btn-outline btn-sm" id="memoBtn" href="#" target="_blank" rel="noopener" hidden>Investment memo</a>
-        </div>
-      </div>
-      <div class="uw-intro reveal">
-        <p>A vacant 1953 industrial building near LAX, listed at $10.8M. The plan is to buy it vacant, renovate, sign a tenant on a five-year NNN lease and sell once the building is stabilized. Adjust the assumptions to see when that plan creates value. The calculator runs the same monthly cash flow as the Excel model, and the base case matches it exactly.</p>
-        <div class="facts">
-          <div><b>32,081 SF</b><span>Building, 1 story</span></div>
-          <div><b>1.20 acres</b><span>Land, M2 zoning</span></div>
-          <div><b>$337 / SF</b><span>Asking price</span></div>
-          <div><b>$1.98 / SF / mo</b><span>Average NNN comp rent</span></div>
-        </div>
-      </div>
-
-      <div class="term">
-        <form class="box controls" id="ctl" autocomplete="off" onsubmit="return false">
-          <div class="box-title"><h3>Assumptions</h3><span>Base case shown</span></div>
-          <div class="presets" id="presets"></div>
-          <div id="sliders"></div>
-          <div class="ctl-foot"><button type="button" class="linkbtn" id="reset">Reset to base case</button><span style="font-size:12px;color:var(--muted)">5-yr hold · 55% LTC</span></div>
-        </form>
-
-        <div class="out">
-          <div class="kpis" id="kpis"></div>
-
-          <div class="box">
-            <div class="box-title"><h3>Does the renovation create value?</h3><span>Yield on cost vs. exit cap</span></div>
-            <div class="gauge">
-              <div class="g-track"></div>
-              <div class="g-zone" id="gZone"></div>
-              <div class="g-tick" id="gCap"><span id="gCapL"></span></div>
-              <div class="g-tick rate" id="gRate"><span id="gRateL"></span></div>
-              <div class="g-dot" id="gDot"><b id="gDotL"></b></div>
-              <div class="g-axis"><span>4.0%</span><span>5.0%</span><span>6.0%</span><span>7.0%</span><span>8.0%</span><span>9.0%</span></div>
-            </div>
-            <p class="verdict" id="verdict" aria-live="polite"></p>
-            <p class="note" id="levNote"></p>
-          </div>
-
-          <div class="box maxbid">
-            <div class="box-title"><h3>What should we pay?</h3><span>Maximum price at target yield on cost</span></div>
-            <div class="price" id="maxP">—</div>
-            <p class="note" id="maxNote"></p>
-            <div class="bidbar"><div class="rail"></div><div class="seg" id="bidSeg"></div>
-              <div class="pin" id="pinMax"><span>max bid</span></div><div class="pin ask" id="pinAsk"><span>ask $10.80M</span></div></div>
-          </div>
-
-          <div class="two">
-            <div class="box chart">
-              <div class="box-title"><h3>Levered cash flow</h3><span>By year</span></div>
-              <svg id="cfChart" viewBox="0 0 520 250" role="img" aria-label="Annual levered cash flow"></svg>
-            </div>
-            <div class="box">
-              <div class="box-title"><h3>Sources &amp; uses</h3><span id="suTot"></span></div>
-              <div class="su-stack" id="suStack"></div>
-              <div class="su" id="su"></div>
-            </div>
-          </div>
-
-          <div class="box">
-            <div class="box-title"><h3>Levered IRR sensitivity</h3><span>Rent (rows) × purchase price (columns)</span></div>
-            <div class="scroll"><table class="sens" id="sens"></table></div>
-            <div class="legend"><span><i style="background:var(--good-soft)"></i>12% or more (value-add target)</span><span><i style="background:var(--warn-soft)"></i>6% to 12%</span><span><i style="background:var(--bad-soft)"></i>Below 6%</span><span><i style="outline:2px solid var(--ink);outline-offset:-2px"></i>Closest to current inputs</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Experience -->
   <section id="experience">
     <div class="wrap">
       <div class="sec-head reveal">
-        <div><div class="label">Background</div><h2>Experience &amp; education</h2></div>
-        <a class="btn btn-outline btn-sm" href="resume.pdf" target="_blank" rel="noopener">Download resume</a>
+        <div><div class="label">Background</div><h2>Experience, Education &amp; Leadership</h2></div>
+        <a class="btn btn-outline btn-sm" href="resume.pdf" target="_blank" rel="noopener">Download Resume</a>
       </div>
       <div class="xp">
         <div class="reveal">
           <h3 class="col-h">Experience</h3>
-          <div class="job"><div class="when">Sep – Oct 2026<br><span class="now">In progress</span></div><div>
+          <div class="job"><div class="when">Sep – Oct 2026<br><span class="now">In Progress</span></div><div>
             <h4>Real Estate Private Equity Intern</h4><div class="org">Project Destined · Remote</div>
-            <ul><li>Building 10-year underwriting models for three U.S. multifamily acquisitions ($5.5M–$17M), projecting revenue, OpEx and NOI and valuing each acquisition and exit by direct capitalization.</li></ul></div></div>
+            <ul><li>Building 10-year underwriting models for three U.S. multifamily acquisitions ($5.5M–$17M), projecting revenue, OpEx and NOI, and valuing each acquisition and exit by direct capitalization.</li></ul></div></div>
           <div class="job"><div class="when">Jun 2026 – Present</div><div>
             <h4>Course Teaching Assistant</h4><div class="org">University of Southern California · RED 547 &amp; RED 200</div>
-            <ul><li>Support Prof. Paul Giorgio and Prof. John Loper on graduate courses: attendance, Brightspace grade structures and weighted Excel gradebooks.</li>
-              <li>Proctor and grade written exams and coursework against detailed answer keys, applying one grading standard across both classes.</li></ul></div></div>
+            <ul><li>Support Professor Paul Giorgio and Professor John Loper in delivering graduate courses, managing attendance, Brightspace grade structures and weighted Excel gradebooks.</li>
+              <li>Proctor and grade written exams and coursework against detailed answer keys, applying consistent grading standards across both classes.</li></ul></div></div>
           <div class="job"><div class="when">Sep 2024 – Jun 2025</div><div>
             <h4>Real Estate Analyst</h4><div class="org">Roshan Realty · Pune, India</div>
-            <ul><li>Built financial models and market feasibility reports that supported $20M+ in investment decisions.</li>
-              <li>Found a residential redevelopment opportunity projected to generate $11M in sales revenue.</li>
-              <li>Flagged regulatory risk on a proposed land acquisition, avoiding $2M of exposure.</li>
-              <li>Led due diligence on $22M+ of acquisitions, and shifted acquisition focus to emerging submarkets using demographic, economic and infrastructure data.</li></ul></div></div>
+            <ul><li>Built financial models and market feasibility reports that guided $20M+ in investment decisions.</li>
+              <li>Identified a residential redevelopment opportunity projected to generate $11M in sales revenue.</li>
+              <li>Identified regulatory risks in a proposed land acquisition, avoiding $2M of exposure.</li>
+              <li>Led due diligence on $22M+ of acquisitions and shifted acquisition focus to emerging areas using demographic, economic and infrastructure trends.</li></ul></div></div>
           <div class="job"><div class="when">Jan – Jul 2024</div><div>
             <h4>Real Estate Analyst Intern</h4><div class="org">Rahul Construction · Pune, India</div>
-            <ul><li>Analyzed leasing, tenant performance and financing for a 150-unit portfolio generating $720K+ in annual rent, supporting upcoming joint ventures.</li>
-              <li>Prepared comparative market analyses on local competition and pricing.</li></ul></div></div>
+            <ul><li>Analyzed leasing data, tenant performance and financing structures for a 150-unit portfolio generating $720K+ in annual rental income, supporting upcoming joint ventures.</li>
+              <li>Prepared comparative market analyses to evaluate local competition and pricing trends.</li></ul></div></div>
           <div class="job"><div class="when">Jan – Nov 2023</div><div>
             <h4>Project Coordinator Intern</h4><div class="org">S.K. Associates · Pune, India</div>
-            <ul><li>Coordinated development of a 400-unit residential community worth $12.2M+.</li>
-              <li>Tracked budgets and processed invoices on $23M+ of redevelopment projects, and assessed zoning and development potential on $18M+.</li></ul></div></div>
+            <ul><li>Managed and coordinated development of a 400-unit residential community worth $12.2M+.</li>
+              <li>Tracked budgets and processed invoices for $23M+ of redevelopment projects, and assessed zoning constraints and development potential on projects worth $18M+.</li></ul></div></div>
+          <h3 class="col-h" style="margin-top:48px">Leadership &amp; Involvement</h3>
+          <div class="job"><div class="when">Sep 2026 – Present</div><div>
+            <h4>Member, Urban Land Institute (ULI)</h4><div class="org">Los Angeles District Council</div>
+            <ul><li>Attend ULI Los Angeles programs and networking events with real estate development and investment professionals.</li></ul></div></div>
+          <div class="job"><div class="when">Aug 2025 – Present</div><div>
+            <h4>Member, Trojan Real Estate Association (TREA)</h4><div class="org">University of Southern California</div>
+            <ul><li>Attend guest lectures, info sessions and workshops with CRE industry professionals across acquisitions, development and finance.</li></ul></div></div>
+          <div class="job"><div class="when">Aug 2025 – Present</div><div>
+            <h4>Member, Construction Management Association of America (CMAA)</h4><div class="org">USC Chapter</div>
+            <ul><li>Attend guest lectures, info sessions and workshops with industry professionals across construction management and real estate.</li></ul></div></div>
+          <div class="job"><div class="when">Aug 2025 – Present</div><div>
+            <h4>Member, Association of Indian Students (AIS)</h4><div class="org">University of Southern California</div>
+            <ul><li>Help plan and coordinate events and workshops for USC students.</li></ul></div></div>
         </div>
         <div class="reveal">
           <h3 class="col-h">Education</h3>
-          <div class="edu-item"><div class="when">Expected May 2027</div><h4>MS, Construction Management</h4>
-            <p>University of Southern California. Focus in Real Estate Finance &amp; Development. GPA 3.5 / 4.0.</p></div>
-          <div class="edu-item"><div class="when">2021 – 2024</div><h4>Bachelor of Business Administration</h4><p>MIT World Peace University, Pune</p></div>
-          <div class="edu-item"><div class="when">2018 – 2021</div><h4>Diploma, Civil Engineering</h4><p>Cusrow Wadia Institute of Technology, Pune</p></div>
+          <div class="edu-item"><div class="when">Expected May 2027</div><h4>MS in Construction Management</h4>
+            <p>University of Southern California. Focus in Real Estate Finance and Development. GPA 3.5/4.0.</p></div>
+          <div class="edu-item"><div class="when">2021 – 2024</div><h4>Bachelor of Business Administration</h4><p>MIT World Peace University, Pune, India</p></div>
+          <div class="edu-item"><div class="when">2018 – 2021</div><h4>Diploma in Civil Engineering</h4><p>Cusrow Wadia Institute of Technology, Pune, India</p></div>
 
           <div class="skills">
             <h3 class="col-h">Skills</h3>
-            <div class="skill-row"><div class="small-label">Underwriting</div><p>DCF, IRR, equity multiple, cash-on-cash, cap-rate valuation, sensitivity analysis</p></div>
-            <div class="skill-row"><div class="small-label">Debt</div><p>DSCR, LTV / LTC, debt yield, loan sizing</p></div>
-            <div class="skill-row"><div class="small-label">Software</div><p>Excel, ARGUS, CoStar, Tableau, Procore, Microsoft Project, GIS</p></div>
-            <div class="skill-row"><div class="small-label">Affiliations</div><p>Trojan Real Estate Association · CMAA, USC Chapter · Association of Indian Students</p></div>
+            <div class="skill-row"><div class="small-label">Underwriting</div><p>DCF, IRR, Equity Multiple, Cash-on-Cash Return, Cap Rate Valuation, Sensitivity Analysis</p></div>
+            <div class="skill-row"><div class="small-label">Debt</div><p>DSCR, LTV / LTC, Debt Yield, Loan Sizing</p></div>
+            <div class="skill-row"><div class="small-label">Development</div><p>Construction Management, Market Analysis, Due Diligence, Real Estate Valuation, GIS &amp; Site Analysis</p></div>
+            <div class="skill-row"><div class="small-label">Software</div><p>Microsoft Excel, Microsoft Office, Microsoft Project, Procore</p></div>
           </div>
         </div>
       </div>
@@ -487,12 +427,11 @@ dialog::backdrop{background:rgba(26,31,43,.45)}
   </section>
 </main>
 
-<!-- Contact -->
 <section id="contact" class="contact" style="padding-top:0">
   <div class="wrap">
     <div>
       <div class="label">Contact</div>
-      <h2>Let's talk.</h2>
+      <h2>Let's Connect</h2>
       <p>Open to full-time acquisitions, development and investment analyst roles starting June 2027.</p>
     </div>
     <div class="clist">
@@ -509,265 +448,74 @@ dialog::backdrop{background:rgba(26,31,43,.45)}
 <div class="toast" id="toast" role="status"></div>
 
 <script>
-/* ============================================================
-   SETTINGS
-   ============================================================ */
 const EMAIL = 'shauryakalbhor17@gmail.com';
-const MEMO_URL = '2051_E_Maple_Memo.pdf';   // set to '' to hide the memo links
 
-/* Deal book. status: live | wip | done. group: Independent | Professional | Coursework */
+/* Deals. status: live | wip. `model` links to the interactive model page, if there is one. */
 const DEALS = [
-  {id:'maple', name:'2051 E Maple Ave', loc:'El Segundo, CA · South Bay', type:'Industrial', group:'Independent', status:'live', feat:true,
-   blurb:'A vacant 32,081 SF Class C industrial building. I underwrote a plan to buy it vacant, renovate, lease it NNN and sell once stabilized, in a monthly 5-year model with an investment memo.',
-   m:[['$10.8M','Asking price'],['5.19%','Yield on cost'],['$8.2M','Maximum bid']],
-   detail:{Thesis:['Buy vacant at a discount to stabilized value.','Renovate the roof, HVAC, power and office, with a seismic check ($50/SF plus 10% contingency).','Lease on a five-year NNN lease at $2.00/SF/month, against a $1.98 comp average.','Sell on forward NOI at a 6.0% exit cap.'],
-     Market:['The South Bay posted record quarterly leasing in Q2 2026, led by advanced manufacturing (KBC Advisors).','Aerospace and defense rose from 2% to 11% of large LA industrial leases. El Segundo industrial vacancy was under 2% at the end of 2025.','Counterpoint: three older nearby buildings, including the subject, sit vacant. Demand favors modern, high-power space.'],
-     Finding:['A 5.2% yield on cost is below both the 6.0% exit cap and the 6.25% loan rate, so the renovation does not create value and leverage lowers returns.','Recommendation: pass at $10.8M. Bid about $8.2M at $2.00 rents, or up to about $9.5M only if rents reach $2.30.'],
-     'Key risks':['Rents below $2.00: each $0.10 cuts levered IRR by about 2.3 points.','Renovation overrun on a 1953 building (seismic, asbestos, roof).','A 14-foot clear height and 1.06 spaces per 1,000 SF of parking narrow the tenant pool.'],
-     'Next steps':['Contractor bids, including a seismic assessment','Signed lease comps from CoStar to confirm $2.00+ rents','Lender quotes and a Phase I environmental report'],
-     Deliverables:['Eight-page investment memo','Monthly cash flow (months 0–60), sources and uses, returns and a maximum-price solve','Rent × price IRR sensitivity table','The live model on this page']}},
-  {id:'pd', name:'U.S. Multifamily Acquisitions', loc:'Project Destined · REPE internship', type:'Multifamily', group:'Professional', status:'wip',
-   blurb:'Ten-year underwriting models for three multifamily acquisitions, projecting revenue, OpEx and NOI and valuing each acquisition and exit by the income approach.',
-   m:[['3','Deals'],['$5.5–17M','Deal size'],['10 years','Model']],
-   detail:{Scope:['Revenue build: rent roll, other income, vacancy and credit loss.','Operating expense projections and NOI.','Direct-cap valuation at acquisition and exit.'],Status:['In progress, September to October 2026.']}},
-  {id:'la', name:'Ground-up Mixed-Use', loc:'Los Angeles, CA', type:'Mixed-use', group:'Independent', status:'wip',
+  {id:'maple', name:'2051 E Maple Ave', loc:'El Segundo, CA · South Bay', type:'Industrial Value-Add', status:'live', feat:true,
+   model:'2051-e-maple.html', memo:'2051_E_Maple_Memo.pdf', excel:'2051_E_Maple_Underwriting.xlsx',
+   blurb:'A vacant 32,081 SF Class C industrial building. I underwrote a plan to buy it vacant, renovate, sign a tenant on an NNN lease and sell once stabilized, using a monthly five-year model and an investment memo.',
+   m:[['$10.8M','Asking Price'],['5.19%','Yield on Cost'],['$8.2M','Maximum Bid']],
+   detail:{'Thesis':['Buy vacant at a discount to stabilized value.','Renovate the roof, HVAC, power and office space, including a seismic check ($50/SF plus a 10% contingency).','Sign a five-year NNN lease at $2.00/SF/month, against a comp average of $1.98.','Sell on forward NOI at a 6.0% exit cap rate.'],
+     'Market':['The South Bay posted record quarterly leasing in Q2 2026, led by advanced manufacturing users (KBC Advisors).','Aerospace and defense rose from 2% to 11% of large LA industrial leases, and El Segundo industrial vacancy was under 2% at the end of 2025.','Counterpoint: three older nearby buildings, including the subject, sit vacant. Demand favors modern, high-power space.'],
+     'Finding':['A 5.2% yield on cost is below both the 6.0% exit cap rate and the 6.25% loan rate, so the renovation does not create value and leverage lowers returns.','Recommendation: pass at $10.8M. Bid about $8.2M at $2.00 rents, or up to about $9.5M only if rents reach $2.30.'],
+     'Key Risks':['Rents below $2.00: each $0.10 reduces levered IRR by about 2.3 percentage points.','Renovation cost overruns on a 1953 building (seismic, asbestos and roof work).','A 14-foot clear height and 1.06 parking spaces per 1,000 SF narrow the tenant pool.'],
+     'Next Steps':['Obtain contractor bids, including a seismic assessment.','Find signed lease comps to confirm rents of $2.00 or more.','Obtain lender quotes and order a Phase I environmental report.']}},
+  {id:'la', name:'Ground-Up Mixed-Use Development', loc:'Los Angeles, CA', type:'Mixed-Use', status:'wip',
    blurb:'A development pro forma for new multifamily over ground-floor retail, from land basis through construction, lease-up and exit.',
-   m:[['Ground-up','Strategy'],['Los Angeles','Market'],['Pro forma','Output']],
-   detail:{Scope:['Land basis and entitlement assumptions.','Hard and soft cost budget and construction draw schedule.','Construction loan, lease-up and stabilized exit.'],Status:['In progress.']}},
-  {id:'nyc', name:'Office-to-Residential Conversion', loc:'Manhattan, NY', type:'Adaptive reuse', group:'Independent', status:'wip',
+   m:[['Ground-Up','Strategy'],['Los Angeles','Market'],['Pro Forma','Output']],
+   detail:{'Scope':['Land basis and entitlement assumptions.','Hard and soft cost budget and construction draw schedule.','Construction loan, lease-up and stabilized exit.'],'Status':['In progress. The model and memo will be added here when complete.']}},
+  {id:'nyc', name:'Office-to-Residential Conversion', loc:'Manhattan, NY', type:'Adaptive Reuse', status:'wip',
    blurb:'Feasibility and returns on converting an older Manhattan office building into apartments, including conversion costs and incentives.',
-   m:[['Conversion','Strategy'],['New York','Market'],['Feasibility','Output']],
-   detail:{Scope:['Floor-plate and conversion-cost feasibility.','Incentive programs and their effect on returns.','Residual land value compared with the office as-is.'],Status:['In progress.']}},
-  {id:'pune', name:'10-Unit Redevelopment Model', loc:'Pune, India', type:'Residential', group:'Professional', status:'done',
-   blurb:'An Excel feasibility model for redeveloping a 10-unit building, covering acquisition, demolition, construction, professional and permitting costs.',
-   m:[['10','Units'],['Feb 2025','Completed'],['Feasibility','Output']],
-   detail:{Scope:['Acquisition and demolition budget.','Construction, professional and regulatory/permitting costs.','Sales revenue and development margin.']}},
-  {id:'clover', name:'1045 S Cloverdale Ave', loc:'Miracle Mile, Los Angeles', type:'Multifamily', group:'Coursework', status:'done',
-   blurb:'A multifamily pro forma valued with both DCF and direct capitalization, plus sensitivity analysis on the key assumptions.',
-   m:[['DCF','Valuation'],['Direct cap','Valuation'],['RED 510','Course']],
-   detail:{Scope:['Multifamily operating pro forma.','Valuation cross-checked by DCF and direct cap.','Sensitivity on key assumptions.']}},
-  {id:'rosecrans', name:'2201 Rosecrans Ave', loc:'El Segundo, CA', type:'Redevelopment', group:'Coursework', status:'done',
-   blurb:'A DCF model comparing redevelopment scenarios for the site to find the option with the strongest risk-adjusted return.',
-   m:[['Scenarios','Compared'],['DCF','Valuation'],['FBE 400x','Course']],
-   detail:{Scope:['Multiple redevelopment programs modeled side by side.','Risk-adjusted return comparison.']}},
-  {id:'oak', name:'25 S Oak Knoll Ave', loc:'Pasadena, CA', type:'Construction', group:'Coursework', status:'done',
-   blurb:'As teaching assistant, ran logistics for a CMAR RFP simulation: six teams, each delivering a 35-page proposal and a 12-minute interview.',
-   m:[['6','Teams'],['CMAR','Delivery'],['RED 547','Course (TA)']],
-   detail:{Scope:['Coordinated the RFP process and team interviews.','Graded proposals against the rubric.']}},
+   m:[['Conversion','Strategy'],['New York','Market'],['Feasibility Study','Output']],
+   detail:{'Scope':['Floor plate and conversion cost feasibility.','Incentive programs and their effect on returns.','Residual land value compared with the office building as-is.'],'Status':['In progress. The model and memo will be added here when complete.']}},
 ];
 
-/* ============================================================
-   UTIL
-   ============================================================ */
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const pct = (v,d=1) => isFinite(v) ? (v*100).toFixed(d)+'%' : 'n/a';
-const mil = v => (v<0?'−':'')+'$'+(Math.abs(v)/1e6).toFixed(2)+'M';
-const usd = v => (v<0?'−$':'$')+Math.round(Math.abs(v)).toLocaleString('en-US');
 function toast(m){ const t=$('#toast'); t.textContent=m; t.classList.add('show'); clearTimeout(toast.t); toast.t=setTimeout(()=>t.classList.remove('show'),2200) }
 $('#yr').textContent = new Date().getFullYear();
-if (MEMO_URL){ $('#memoBtn').href = MEMO_URL; $('#memoBtn').hidden = false }
 
-/* ============================================================
-   UNDERWRITING MODEL: same monthly logic as 2051_E_Maple_Underwriting.xlsx
-   (the base-case levered IRR grid matches the Excel Data Table)
-   ============================================================ */
-function runModel(x){
-  const S=32081,k=0.02,cont=0.10,rm=6,g=0.035,term=60,free=3,ti=10,lc=0.05,tax=0.012,ins=0.75,mnt=0.75,
-        mg=0.03,res=0.15,vac=0.05,ltc=0.55,lf=0.01,hold=60,sc=0.02;
-  const P=x.price,rent=x.rent,ec=x.exitCap,ir=x.rate,lu=x.leaseUp,reno=x.renoPSF*S*(1+cont);
-  const LS=rm+lu+1,RS=LS+free;
-  const opex=(P*tax/S+ins+mnt)/12, LC=lc*rent*S*term, TI=ti*S, carry=opex*S*(LS-1);
-  const cost=P*(1+k)+reno+TI+LC+carry, loan=cost*ltc, fee=loan*lf;
-  const noi=m=>{ const ly=m<LS?0:Math.floor((m-LS)/12)+1; const r=m>=RS?rent*S*Math.pow(1+g,ly-1):0, re=m>=LS?opex*S:0; return (r+re)*(1-vac)-opex*S-r*mg };
-  const u=[-P*(1+k)], l=[u[0]+loan-fee];
-  for(let m=1;m<=hold;m++){
-    const cap=(m<=rm?-reno/rm:0)+(m===LS?-TI-LC:0)-res*S/12;
-    const s=m===hold?noi(m+1)*12/ec*(1-sc):0;
-    const cf=noi(m)+cap+s; u.push(cf); l.push(cf-loan*ir/12-(m===hold?loan:0));
-  }
-  const xirr=c=>{ const d0=Date.UTC(2027,8,1), t=c.map((_,i)=>(Date.UTC(2027,8+i,1)-d0)/864e5/365);
-    let lo=-0.99,hi=3,mid=0; for(let it=0;it<200;it++){ mid=(lo+hi)/2; let v=0; for(let i=0;i<c.length;i++) v+=c[i]/Math.pow(1+mid,t[i]); if(v>0) lo=mid; else hi=mid } return mid };
-  const sum=a=>a.reduce((p,q)=>p+q,0);
-  const mult=a=>{ let pos=0,neg=0; a.forEach(v=>{ if(v>0) pos+=v; else neg-=v }); return pos/neg };
-  let cum=0,minCum=0; l.forEach(v=>{ cum+=v; if(cum<minCum) minCum=cum });
-  const stabNOI=noi(RS)*12, yoc=stabNOI/cost;
-  const I=ins+mnt, N=LS-1, y=x.target;
-  const maxP=(12*rent*S*(1-vac-mg)-vac*I*S-y*(reno+TI+LC+I*S*N/12))/(y*(1+k+tax*N/12)+vac*tax);
-  const years=[l[0]]; for(let yr=1;yr<=5;yr++) years.push(sum(l.slice(12*(yr-1)+1,12*yr+1)));
-  return {cost,loan,fee,stabNOI,yoc,spread:yoc-ec,uIRR:xirr(u),lIRR:xirr(l),uEM:mult(u),lEM:mult(l),peakEq:-minCum,
-    dscr:stabNOI/(loan*ir),maxPrice:maxP,years,
-    uses:[['Purchase price',P],['Closing costs',P*k],['Renovation + contingency',reno],['Tenant improvements',TI],['Leasing commissions',LC],['Carry while vacant',carry],['Loan fee',fee]]};
-}
+const ST = {live:['s-live','Model Live'], wip:['s-wip','In Progress']};
+$('#dealGrid').innerHTML = DEALS.map(d=>`
+  <button class="card ${d.feat?'feat':''}" data-id="${d.id}" type="button">
+    <div class="card-top"><span class="status ${ST[d.status][0]}">${ST[d.status][1]}</span><span class="type">${esc(d.type)}</span></div>
+    <h3>${esc(d.name)}</h3>
+    <div class="loc">${esc(d.loc)}</div>
+    <p>${esc(d.blurb)}</p>
+    <div class="figs">${d.m.map(([v,k])=>`<div><b>${esc(v)}</b><span>${esc(k)}</span></div>`).join('')}</div>
+    <span class="more">View Details →</span>
+  </button>`).join('');
+$('#dealGrid').querySelectorAll('.card').forEach(c=>c.onclick=()=>openDeal(c.dataset.id));
 
-const FIELDS = [
-  {id:'price',   label:'Purchase price',               min:7500000, max:11500000, step:100000, v:10800000, f:v=>mil(v), hint:'Listed at $10.8M'},
-  {id:'rent',    label:'Renovated rent ($/SF/mo NNN)', min:1.60, max:2.60, step:0.05, v:2.00, f:v=>'$'+v.toFixed(2), hint:'Three NNN comps average $1.98'},
-  {id:'exitCap', label:'Exit cap rate',                min:0.050, max:0.070, step:0.0025, v:0.06, f:v=>pct(v,2), hint:'LA industrial: mid-5% to 6%'},
-  {id:'renoPSF', label:'Renovation cost ($/SF)',       min:30, max:100, step:5, v:50, f:v=>'$'+v, hint:'Plus 10% contingency'},
-  {id:'leaseUp', label:'Lease-up after renovation',    min:3, max:12, step:1, v:6, f:v=>v+' months', hint:'Three nearby comps are vacant'},
-  {id:'rate',    label:'Loan interest rate',           min:0.05, max:0.08, step:0.00125, v:0.0625, f:v=>pct(v,2), hint:'55% loan-to-cost, interest-only'},
-  {sep:true},
-  {id:'target',  label:'Target yield on cost',         min:0.055, max:0.08, step:0.0025, v:0.065, f:v=>pct(v,2), hint:'About 50 bps over the exit cap'},
-];
-const PRESETS = [
-  ['Base case', {}],
-  ['Upside: $2.30 rent', {rent:2.30, exitCap:0.0575, leaseUp:4}],
-  ['Downside', {rent:1.85, exitCap:0.0650, leaseUp:12, renoPSF:65}],
-  ['Bid at $8.2M', {price:8200000}],
-];
-const ASK = 10800000;
-const state = {}; FIELDS.forEach(f=>{ if(!f.sep) state[f.id]=f.v });
-
-function buildControls(){
-  $('#sliders').innerHTML = FIELDS.map(f => f.sep ? '<div class="ctl-sep"></div>' :
-    `<div class="ctl"><div class="ctl-head"><label for="in-${f.id}">${f.label}</label><output id="o-${f.id}"></output></div>
-     <input type="range" id="in-${f.id}" min="${f.min}" max="${f.max}" step="${f.step}" value="${f.v}"><div class="hint">${f.hint}</div></div>`).join('');
-  FIELDS.forEach(f => { if (f.sep) return; $('#in-'+f.id).addEventListener('input', e => { state[f.id] = +e.target.value; syncUI(); update() }) });
-  $('#presets').innerHTML = PRESETS.map((p,i)=>`<button type="button" data-i="${i}">${p[0]}</button>`).join('');
-  $('#presets').querySelectorAll('button').forEach(b => b.onclick = () => applyPreset(PRESETS[+b.dataset.i][1]));
-  $('#reset').onclick = () => applyPreset({});
-}
-function applyPreset(p){ FIELDS.forEach(f=>{ if(!f.sep) state[f.id] = p[f.id] ?? f.v }); syncUI(); update() }
-function syncUI(){
-  FIELDS.forEach(f => { if (f.sep) return; const el = $('#in-'+f.id); el.value = state[f.id];
-    el.style.setProperty('--fill', ((state[f.id]-f.min)/(f.max-f.min)*100)+'%'); $('#o-'+f.id).textContent = f.f(state[f.id]) });
-}
-
-const LO=0.04, HI=0.09, gpos = v => Math.max(0,Math.min(1,(v-LO)/(HI-LO)))*100;
-function update(){
-  const x = state, r = runModel(x);
-  const cls = (v,g,b) => v>=g ? 'good' : v<b ? 'bad' : 'warn';
-  const kpi = (k,v,s,c='') => `<div class="kpi"><div class="k">${k}</div><div class="v ${c}">${v}</div><div class="s">${s}</div></div>`;
-  $('#kpis').innerHTML =
-    kpi('Levered IRR', pct(r.lIRR), `${r.lEM.toFixed(2)}x equity multiple`, cls(r.lIRR,.12,.06)) +
-    kpi('Unlevered IRR', pct(r.uIRR), `${r.uEM.toFixed(2)}x multiple`, cls(r.uIRR,.08,.05)) +
-    kpi('Yield on cost', pct(r.yoc,2), `${r.spread>=0?'+':''}${Math.round(r.spread*1e4)} bps vs. exit cap`, r.spread>=.005?'good':r.spread<0?'bad':'warn') +
-    kpi('DSCR', r.dscr.toFixed(2)+'x', `Peak equity ${mil(r.peakEq)}`, cls(r.dscr,1.25,1));
-
-  $('#gDot').style.left = gpos(r.yoc)+'%'; $('#gDotL').textContent = pct(r.yoc,2); $('#gDot').classList.toggle('bad', r.yoc < x.exitCap);
-  $('#gCap').style.left = gpos(x.exitCap)+'%'; $('#gCapL').textContent = 'Exit cap '+pct(x.exitCap,2);
-  $('#gRate').style.left = gpos(x.rate)+'%'; $('#gRateL').textContent = 'Loan '+pct(x.rate,2);
-  $('#gZone').style.left = gpos(x.exitCap)+'%'; $('#gZone').style.width = (100-gpos(x.exitCap))+'%';
-  const bps = Math.round(r.spread*1e4);
-  $('#verdict').innerHTML = bps < 0
-    ? `<strong style="color:var(--bad);font-weight:600">No.</strong> The renovated building yields ${pct(r.yoc,2)} on cost, ${-bps} bps below the exit cap, so it would sell for less than it cost to create.`
-    : bps < 50
-    ? `<strong style="color:var(--warn);font-weight:600">Marginally.</strong> Yield on cost beats the exit cap by only ${bps} bps, a thin cushion for renovation and lease-up risk.`
-    : `<strong style="color:var(--good);font-weight:600">Yes.</strong> Yield on cost clears the exit cap by ${bps} bps, enough margin to compensate for the risk of renovating and re-leasing.`;
-  $('#levNote').textContent = r.yoc < x.rate
-    ? `Negative leverage: the loan costs ${pct(x.rate,2)} but the property yields ${pct(r.yoc,2)}, so borrowing lowers the return on equity.`
-    : `Positive leverage: the property yields more than the ${pct(x.rate,2)} cost of debt, so borrowing raises the return on equity.`;
-
-  $('#maxP').textContent = usd(r.maxPrice);
-  const d = r.maxPrice/ASK - 1;
-  $('#maxNote').textContent = `${Math.abs(Math.round(d*100))}% ${d<0?'below':'above'} the $10.8M asking price ($${Math.round(r.maxPrice/32081)}/SF), to reach a ${pct(x.target,2)} yield on cost at $${x.rent.toFixed(2)} rent.`;
-  const bmin=6e6, bmax=13e6, bp=v=>Math.max(0,Math.min(100,(v-bmin)/(bmax-bmin)*100));
-  $('#pinMax').style.left = bp(r.maxPrice)+'%'; $('#pinAsk').style.left = bp(ASK)+'%';
-  $('#bidSeg').style.left = '0%'; $('#bidSeg').style.width = bp(r.maxPrice)+'%';
-  $('#pinMax span').textContent = 'max bid '+mil(r.maxPrice);
-
-  const total = r.uses.reduce((a,[,v])=>a+v,0);
-  const cols = ['#1f3a5f','#4a6a93','#a8823f','#c9ae7b','#7d8796','#b7bec8','#dcd6ca'];
-  $('#suStack').innerHTML = r.uses.map(([,v],i)=>`<i style="width:${v/total*100}%;background:${cols[i]}"></i>`).join('');
-  $('#su').innerHTML = r.uses.map(([k,v],i)=>`<div><span><i style="display:inline-block;width:9px;height:9px;background:${cols[i]};margin-right:9px"></i>${k}</span><span>${mil(v)}</span></div>`).join('')
-    + `<div class="tot"><span>Total uses</span><span>${mil(total)}</span></div>`
-    + `<div><span>Loan (55% LTC)</span><span>${mil(r.loan)}</span></div><div><span>Equity at close</span><span>${mil(total-r.loan)}</span></div>`;
-  $('#suTot').textContent = '$'+Math.round(total/32081)+'/SF all-in';
-
-  cfChart(r.years);
-  sensTable();
-}
-
-function cfChart(ys){
-  const W=520,H=250,L=4,R=4,T=24,B=28, ih=H-T-B;
-  const maxv=Math.max(0,...ys), minv=Math.min(0,...ys), span=(maxv-minv)||1, y=v=>T+(maxv-v)/span*ih;
-  const step=(W-L-R)/ys.length, bw=step*.52;
-  let s='';
-  [0,.25,.5,.75,1].forEach(t=>{ const yy=T+t*ih; s+=`<line x1="${L}" x2="${W-R}" y1="${yy}" y2="${yy}" stroke="#ece8df"/>` });
-  ys.forEach((v,i)=>{
-    const x=L+i*step+(step-bw)/2, top=y(Math.max(v,0)), h=Math.max(1.5,Math.abs(y(v)-y(0)));
-    s+=`<rect x="${x}" y="${top}" width="${bw}" height="${h}" fill="${v<0?'#a8433d':'#1f3a5f'}"><title>${mil(v)}</title></rect>`;
-    const ly = v<0 ? y(v)+14 : top-7;
-    s+=`<text class="lbl" x="${x+bw/2}" y="${ly}" text-anchor="middle">${mil(v)}</text>`;
-    s+=`<text x="${x+bw/2}" y="${H-6}" text-anchor="middle">${i===0?'Closing':'Year '+i}</text>`;
-  });
-  s+=`<line x1="${L}" x2="${W-R}" y1="${y(0)}" y2="${y(0)}" stroke="#1a1f2b"/>`;
-  $('#cfChart').innerHTML = s;
-}
-
-function sensTable(){
-  const prices=[8.5e6,9e6,9.5e6,1e7,10.8e6], rents=[1.8,1.9,2.0,2.1,2.2,2.3];
-  const nearest=(arr,v)=>arr.reduce((a,b)=>Math.abs(b-v)<Math.abs(a-v)?b:a);
-  const np=nearest(prices,state.price), nr=nearest(rents,state.rent);
-  let t=`<thead><tr><th class="rh">Rent</th>${prices.map(p=>`<th>$${(p/1e6).toFixed(1)}M</th>`).join('')}</tr></thead><tbody>`;
-  rents.forEach(rt=>{
-    t+=`<tr><th class="rh">$${rt.toFixed(2)}</th>`;
-    prices.forEach(p=>{
-      const v=runModel({...state,price:p,rent:rt}).lIRR;
-      const [bg,fg] = v>=.12 ? ['var(--good-soft)','var(--good)'] : v<.06 ? ['var(--bad-soft)','var(--bad)'] : ['var(--warn-soft)','var(--warn)'];
-      t+=`<td class="${p===np&&rt===nr?'me':''}" style="background:${bg};color:${fg}">${pct(v)}</td>`;
-    });
-    t+='</tr>';
-  });
-  $('#sens').innerHTML = t+'</tbody>';
-}
-
-/* ============================================================
-   DEALS
-   ============================================================ */
-let filter = 'All';
-const ST = {live:['s-live','Model live'], wip:['s-wip','In progress'], done:['s-done','Complete']};
-function renderFilters(){
-  const groups = ['All','Independent','Professional','Coursework'];
-  const n = g => g==='All' ? DEALS.length : DEALS.filter(d=>d.group===g).length;
-  $('#filters').innerHTML = groups.map(g=>`<button role="tab" aria-selected="${filter===g}" class="${filter===g?'on':''}" data-f="${g}">${g}<em>${n(g)}</em></button>`).join('');
-  $('#filters').querySelectorAll('button').forEach(b=>b.onclick=()=>{ filter=b.dataset.f; renderFilters(); renderDeals() });
-}
-function renderDeals(){
-  const list = DEALS.filter(d => filter==='All' || d.group===filter);
-  $('#dealGrid').innerHTML = list.map(d=>`
-    <button class="card ${d.feat&&filter==='All'?'feat':''}" data-id="${d.id}" type="button">
-      <div class="card-top"><span class="status ${ST[d.status][0]}">${ST[d.status][1]}</span><span class="type">${esc(d.type)}</span></div>
-      <h3>${esc(d.name)}</h3>
-      <div class="loc">${esc(d.loc)}</div>
-      <p>${esc(d.blurb)}</p>
-      <div class="figs">${d.m.map(([v,k])=>`<div><b>${esc(v)}</b><span>${esc(k)}</span></div>`).join('')}</div>
-      <span class="more">View details →</span>
-    </button>`).join('');
-  $('#dealGrid').querySelectorAll('.card').forEach(c=>c.onclick=()=>openDeal(c.dataset.id));
-}
 const modal = $('#modal');
 function openDeal(id){
   const d = DEALS.find(x=>x.id===id); if (!d) return;
+  const actions = d.model
+    ? `<a class="btn btn-primary" href="${esc(d.model)}">Open Interactive Model</a>`
+      + (d.memo ? `<a class="btn btn-outline" href="${esc(d.memo)}" target="_blank" rel="noopener">Investment Memo</a>` : '')
+      + (d.excel ? `<a class="btn btn-outline" href="${esc(d.excel)}" download>Excel Model</a>` : '')
+    : `<button class="btn btn-outline" type="button" onclick="modal.close()">Close</button>`;
   $('#modalInner').innerHTML = `
-    <div class="modal-head"><button class="x" aria-label="Close" onclick="modal.close()">✕</button>
+    <div class="modal-head"><button class="x" type="button" aria-label="Close" onclick="modal.close()">✕</button>
       <span class="status ${ST[d.status][0]}">${ST[d.status][1]}</span>
       <h3>${esc(d.name)}</h3><div class="loc">${esc(d.loc)} · ${esc(d.type)}</div></div>
     <div class="modal-figs">${d.m.map(([v,k])=>`<div><b>${esc(v)}</b><span>${esc(k)}</span></div>`).join('')}</div>
     <div class="modal-body"><p>${esc(d.blurb)}</p>
-      ${Object.entries(d.detail||{}).map(([h,items])=>`<h5>${esc(h)}</h5><ul>${items.map(i=>`<li>${esc(i)}</li>`).join('')}</ul>`).join('')}</div>
-    <div class="modal-actions">${d.id==='maple'
-      ? `<button class="btn btn-primary" id="goModel">Open the live model</button><a class="btn btn-outline" href="2051_E_Maple_Underwriting.xlsx" download>Excel model</a>${MEMO_URL?`<a class="btn btn-outline" href="${esc(MEMO_URL)}" target="_blank" rel="noopener">Investment memo</a>`:''}`
-      : `<button class="btn btn-outline" onclick="modal.close()">Close</button>`}</div>`;
+      ${Object.entries(d.detail).map(([h,items])=>`<h5>${esc(h)}</h5><ul>${items.map(i=>`<li>${esc(i)}</li>`).join('')}</ul>`).join('')}</div>
+    <div class="modal-actions">${actions}</div>`;
   modal.showModal();
-  const g = $('#goModel'); if (g) g.onclick = () => { modal.close(); $('#underwriting').scrollIntoView() };
 }
 modal.addEventListener('click', e => { if (e.target===modal) modal.close() });
+if (location.hash === '#maple') openDeal('maple');
 
-/* ============================================================
-   MISC
-   ============================================================ */
 $('#copyEmail').onclick = () => (navigator.clipboard?.writeText(EMAIL) || Promise.reject()).then(()=>toast('Email copied'), ()=>{ location.href='mailto:'+EMAIL });
 
 const io = new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('vis'); io.unobserve(e.target) } }),{threshold:.1});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-
 const navLinks=[...document.querySelectorAll('.nav a')];
 const nio=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting) navLinks.forEach(a=>a.classList.toggle('on',a.hash==='#'+e.target.id)) }),{rootMargin:'-45% 0px -50% 0px'});
-['deals','underwriting','experience','contact'].forEach(id=>nio.observe(document.getElementById(id)));
-
-renderFilters(); renderDeals(); buildControls(); syncUI(); update();
+['deals','experience','contact'].forEach(id=>nio.observe(document.getElementById(id)));
 </script>
 </body>
 </html>
