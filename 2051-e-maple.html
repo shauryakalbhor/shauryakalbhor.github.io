@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>2051 E Maple Ave Interactive Model | Shaurya Kalbhor</title>
+<meta name="description" content="Interactive underwriting model for a value-add industrial building at 2051 E Maple Ave, El Segundo, CA.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%231f3a5f'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='16' text-anchor='middle' fill='%23f7f5f0'%3ESK%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f7f5f0; --panel:#ffffff; --ink:#1a1f2b; --ink-2:#3d4452; --muted:#6b7280;
+  --rule:#e2ddd2; --rule-2:#ece8df;
+  --navy:#1f3a5f; --navy-2:#2c4f7c; --navy-soft:#e8edf3; --brass:#a8823f;
+  --good:#2e7d4f; --good-soft:#e5f1e9; --warn:#9a6b17; --warn-soft:#f6eedd; --bad:#a8433d; --bad-soft:#f5e3e1;
+  --serif:'Newsreader',Georgia,'Times New Roman',serif;
+  --sans:'Instrument Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--paper);color:var(--ink);font:16px/1.6 var(--sans);-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+a{color:var(--navy);text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--navy);outline-offset:3px;border-radius:2px}
+.wrap{max-width:1160px;margin:0 auto;padding:0 32px}
+.label{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--brass)}
+.small-label{font-size:11.5px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+
+/* ---------- Header ---------- */
+.top{position:sticky;top:0;z-index:20;background:rgba(247,245,240,.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+.top .wrap{display:flex;align-items:center;gap:32px;height:68px}
+.brand{font-family:var(--serif);font-size:21px;font-weight:500;color:var(--ink);letter-spacing:-.01em;white-space:nowrap}
+.nav{display:flex;gap:28px;margin-left:auto}
+.nav a{color:var(--ink-2);font-size:14.5px;font-weight:500;position:relative;padding:4px 0}
+.nav a::after{content:'';position:absolute;left:0;right:0;bottom:-2px;height:1px;background:var(--navy);transform:scaleX(0);transition:transform .25s}
+.nav a:hover::after,.nav a.on::after{transform:scaleX(1)}
+.nav a.on{color:var(--navy)}
+
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:3px;font:500 14.5px var(--sans);border:1px solid var(--navy);transition:background .2s,color .2s;white-space:nowrap;cursor:pointer}
+.btn-primary{background:var(--navy);color:#fff}
+.btn-primary:hover{background:var(--navy-2)}
+.btn-outline{color:var(--navy);background:transparent}
+.btn-outline:hover{background:var(--navy-soft)}
+.btn-sm{padding:8px 14px;font-size:13.5px}
+
+/* ---------- Hero ---------- */
+.hero{padding:88px 0 64px;display:grid;grid-template-columns:1.3fr 1fr;gap:72px;align-items:center}
+.hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(46px,6vw,74px);line-height:1.02;letter-spacing:-.02em;margin:18px 0 14px}
+.hero .role{font-family:var(--serif);font-style:italic;font-size:23px;color:var(--navy);margin-bottom:24px}
+.hero p.lede{font-size:18px;color:var(--ink-2);max-width:56ch}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+.avail{display:inline-flex;align-items:center;gap:9px;font-size:13.5px;color:var(--ink-2)}
+.avail i{width:7px;height:7px;border-radius:50%;background:var(--good)}
+
+.profile{background:var(--panel);border:1px solid var(--rule);border-top:3px solid var(--navy)}
+.profile-hd{padding:20px 24px 16px;border-bottom:1px solid var(--rule-2)}
+.profile-hd h2{font-family:var(--serif);font-weight:500;font-size:20px}
+.profile dl{display:grid;grid-template-columns:130px 1fr}
+.profile dt,.profile dd{padding:13px 24px;border-bottom:1px solid var(--rule-2);font-size:14.5px}
+.profile dt{color:var(--muted);padding-right:0}
+.profile dd{color:var(--ink)}
+.profile dl> :nth-last-child(-n+2){border-bottom:0}
+
+/* ---------- Metrics strip ---------- */
+.metrics-strip{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--ink);border-bottom:1px solid var(--rule)}
+.metrics-strip div{padding:26px 24px 26px 0}
+.metrics-strip div+div{padding-left:24px;border-left:1px solid var(--rule)}
+.metrics-strip b{display:block;font-family:var(--serif);font-weight:400;font-size:44px;line-height:1;letter-spacing:-.02em;color:var(--navy)}
+.metrics-strip span{display:block;font-size:14px;color:var(--ink-2);margin-top:10px;max-width:26ch}
+
+/* ---------- Sections ---------- */
+section{padding:96px 0 0}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:36px}
+.sec-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(34px,4vw,46px);line-height:1.08;letter-spacing:-.015em;margin-top:10px}
+.sec-head p{color:var(--ink-2);max-width:62ch;margin-top:12px}
+
+/* ---------- Deals ---------- */
+.tabs{display:flex;gap:28px;border-bottom:1px solid var(--rule);margin-bottom:28px;overflow-x:auto}
+.tabs button{padding:0 0 12px;font-size:14.5px;font-weight:500;color:var(--muted);border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap}
+.tabs button:hover{color:var(--ink)}
+.tabs button.on{color:var(--navy);border-bottom-color:var(--navy)}
+.tabs em{font-style:normal;color:var(--muted);font-weight:400;margin-left:4px}
+.deals{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:var(--panel);border:1px solid var(--rule);padding:26px;display:flex;flex-direction:column;cursor:pointer;transition:border-color .2s,box-shadow .2s;text-align:left}
+.card:hover{border-color:#cfc8b8;box-shadow:0 10px 30px -18px rgba(26,31,43,.25)}
+.card.feat{grid-column:span 2;border-top:3px solid var(--navy)}
+.card-top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:16px}
+.status{font-size:12px;font-weight:500;display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
+.status::before{content:'';width:7px;height:7px;border-radius:50%;background:currentColor}
+.s-live{color:var(--good)} .s-wip{color:var(--warn)} .s-done{color:var(--muted)}
+.card .type{font-size:12px;color:var(--muted);letter-spacing:.04em}
+.card h3{font-family:var(--serif);font-weight:500;font-size:23px;line-height:1.2;letter-spacing:-.01em}
+.card.feat h3{font-size:30px}
+.card .loc{font-size:14px;color:var(--muted);margin:4px 0 14px}
+.card p{font-size:15px;color:var(--ink-2);flex:1}
+.card .figs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px;padding-top:16px;border-top:1px solid var(--rule-2)}
+.card .figs b{display:block;font-size:17px;font-weight:600;color:var(--ink)}
+.card .figs span{font-size:12px;color:var(--muted)}
+.card .more{margin-top:18px;font-size:14px;font-weight:500;color:var(--navy)}
+.card:hover .more{text-decoration:underline;text-underline-offset:3px}
+
+/* ---------- Underwriting ---------- */
+.uw-intro{display:grid;grid-template-columns:1.25fr 1fr;gap:48px;margin-bottom:32px;align-items:start}
+.uw-intro p{color:var(--ink-2)}
+.facts{display:grid;grid-template-columns:1fr 1fr;background:var(--panel);border:1px solid var(--rule)}
+.facts div{padding:14px 18px;border-bottom:1px solid var(--rule-2)}
+.facts div:nth-child(odd){border-right:1px solid var(--rule-2)}
+.facts div:nth-last-child(-n+2){border-bottom:0}
+.facts b{display:block;font-size:18px;font-weight:600}
+.facts span{font-size:12.5px;color:var(--muted)}
+
+.term{display:grid;grid-template-columns:320px minmax(0,1fr);gap:24px;align-items:start}
+.box{background:var(--panel);border:1px solid var(--rule);padding:24px}
+.box-title{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:18px;flex-wrap:wrap}
+.box-title h3{font-family:var(--serif);font-weight:500;font-size:21px}
+.box-title span{font-size:12.5px;color:var(--muted)}
+.controls{position:sticky;top:88px}
+.presets{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:22px}
+.presets button{font-size:12.5px;padding:6px 10px;border:1px solid var(--rule);border-radius:3px;color:var(--ink-2)}
+.presets button:hover{border-color:var(--navy);color:var(--navy)}
+.ctl{margin-bottom:18px}
+.ctl-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:14px;color:var(--ink-2);margin-bottom:7px}
+.ctl-head output{font-weight:600;color:var(--ink)}
+.ctl .hint{font-size:12px;color:var(--muted);margin-top:4px}
+.ctl-sep{border-top:1px solid var(--rule-2);margin:22px 0 18px}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:3px;border-radius:2px;outline:none;cursor:pointer;
+  background:linear-gradient(90deg,var(--navy) 0,var(--navy) var(--fill,50%),var(--rule) var(--fill,50%))}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;background:#fff;border:2px solid var(--navy);box-shadow:0 1px 3px rgba(0,0,0,.15)}
+input[type=range]::-moz-range-thumb{width:13px;height:13px;border-radius:50%;background:#fff;border:2px solid var(--navy)}
+.ctl-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;border-top:1px solid var(--rule-2);padding-top:14px;margin-top:6px}
+.linkbtn{font-size:13.5px;font-weight:500;color:var(--navy)}
+.linkbtn:hover{text-decoration:underline;text-underline-offset:3px}
+
+.out{display:grid;gap:24px;min-width:0}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);background:var(--panel);border:1px solid var(--rule)}
+.kpi{padding:20px 22px}
+.kpi+.kpi{border-left:1px solid var(--rule-2)}
+.kpi .k{font-size:12.5px;color:var(--muted)}
+.kpi .v{font-family:var(--serif);font-size:36px;line-height:1.1;margin-top:6px;letter-spacing:-.01em}
+.kpi .s{font-size:12.5px;color:var(--muted);margin-top:4px}
+.v.good{color:var(--good)} .v.bad{color:var(--bad)} .v.warn{color:var(--warn)}
+
+.gauge{position:relative;height:104px;margin:16px 6px 0}
+.g-track{position:absolute;left:0;right:0;top:48px;height:2px;background:var(--rule)}
+.g-zone{position:absolute;top:44px;height:10px;background:var(--good-soft);border-left:2px solid var(--good);transition:.3s}
+.g-tick{position:absolute;top:32px;height:36px;border-left:1px solid var(--ink-2);transition:left .3s}
+.g-tick span{position:absolute;top:-22px;left:0;transform:translateX(-50%);font-size:12px;color:var(--ink-2);white-space:nowrap}
+.g-tick.rate{border-left:1px dashed var(--warn)}
+.g-tick.rate span{top:40px;color:var(--warn)}
+.g-dot{position:absolute;top:40px;width:18px;height:18px;margin-left:-9px;border-radius:50%;background:var(--navy);border:3px solid #fff;box-shadow:0 0 0 1px var(--navy);transition:left .3s,background .3s,box-shadow .3s}
+.g-dot.bad{background:var(--bad);box-shadow:0 0 0 1px var(--bad)}
+.g-dot b{position:absolute;top:-30px;left:50%;transform:translateX(-50%);font-family:var(--serif);font-size:19px;font-weight:500;white-space:nowrap}
+.g-axis{position:absolute;left:0;right:0;top:84px;display:flex;justify-content:space-between;font-size:11.5px;color:var(--muted)}
+.verdict{font-family:var(--serif);font-size:21px;line-height:1.45;margin-top:22px;max-width:62ch}
+.note{font-size:14px;color:var(--muted);margin-top:8px;max-width:72ch}
+
+.maxbid .price{font-family:var(--serif);font-size:clamp(40px,5vw,56px);line-height:1;color:var(--navy);letter-spacing:-.02em}
+.bidbar{position:relative;height:40px;margin-top:24px}
+.bidbar .rail{position:absolute;left:0;right:0;top:14px;height:3px;background:var(--rule)}
+.bidbar .seg{position:absolute;top:14px;height:3px;background:var(--navy);transition:.3s}
+.bidbar .pin{position:absolute;top:4px;height:22px;border-left:2px solid var(--navy);transition:left .3s}
+.bidbar .pin span{position:absolute;top:24px;left:0;transform:translateX(-50%);font-size:12px;color:var(--navy);white-space:nowrap;font-weight:500}
+.bidbar .pin.ask{border-color:var(--warn)} .bidbar .pin.ask span{color:var(--warn)}
+
+.two{display:grid;grid-template-columns:1.2fr 1fr;gap:24px}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.chart text{font-family:var(--sans);font-size:11px;fill:var(--muted)}
+.chart .lbl{fill:var(--ink);font-weight:500}
+.su div{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid var(--rule-2);font-size:14px;color:var(--ink-2)}
+.su div span:last-child{color:var(--ink)}
+.su div.tot{font-weight:600;color:var(--ink);border-bottom:1px solid var(--ink)}
+.su-stack{display:flex;height:8px;margin:0 0 14px;gap:2px}
+.su-stack i{height:100%}
+
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.sens{border-collapse:collapse;width:100%}
+.sens th{font-size:12.5px;font-weight:500;color:var(--muted);padding:8px 10px;text-align:center;white-space:nowrap;border-bottom:1px solid var(--ink)}
+.sens th.rh{text-align:left;border-bottom:1px solid var(--rule-2);color:var(--ink-2)}
+.sens thead th.rh{border-bottom:1px solid var(--ink)}
+.sens td{font-size:14px;text-align:center;padding:10px;border-bottom:1px solid #fff;border-left:1px solid #fff;white-space:nowrap}
+.sens td.me{outline:2px solid var(--ink);outline-offset:-2px;font-weight:600}
+.legend{display:flex;gap:18px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);margin-top:14px}
+.legend i{display:inline-block;width:11px;height:11px;margin-right:6px;vertical-align:-1px}
+
+/* ---------- Experience ---------- */
+.xp{display:grid;grid-template-columns:1.5fr 1fr;gap:64px}
+.col-h{font-family:var(--serif);font-weight:500;font-size:22px;padding-bottom:12px;border-bottom:1px solid var(--ink);margin-bottom:6px}
+.job{display:grid;grid-template-columns:150px 1fr;gap:20px;padding:22px 0;border-bottom:1px solid var(--rule)}
+.job:last-child{border-bottom:0}
+.job .when{font-size:13.5px;color:var(--muted);padding-top:3px}
+.job .now{display:inline-block;margin-top:6px;font-size:11.5px;font-weight:600;color:var(--good);letter-spacing:.06em;text-transform:uppercase}
+.job h4{font-family:var(--serif);font-weight:500;font-size:20px;line-height:1.25}
+.job .org{font-size:14.5px;color:var(--navy);margin-top:2px}
+.job ul{margin:10px 0 0 18px;display:grid;gap:5px}
+.job li{font-size:15px;color:var(--ink-2)}
+.job li::marker{color:var(--brass)}
+.edu-item{padding:18px 0;border-bottom:1px solid var(--rule)}
+.edu-item .when{font-size:13px;color:var(--muted)}
+.edu-item h4{font-family:var(--serif);font-weight:500;font-size:19px;margin:2px 0}
+.edu-item p{font-size:14.5px;color:var(--ink-2)}
+.skills{margin-top:36px}
+.skill-row{padding:14px 0;border-bottom:1px solid var(--rule-2)}
+.skill-row .small-label{margin-bottom:8px}
+.skill-row p{font-size:14.5px;color:var(--ink-2);line-height:1.7}
+
+/* ---------- Contact ---------- */
+.contact{margin-top:96px;background:var(--navy);color:#fff}
+.contact .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:64px;padding-top:80px;padding-bottom:80px;align-items:end}
+.contact .label{color:#d4b67a}
+.contact h2{font-family:var(--serif);font-weight:400;font-size:clamp(38px,5vw,58px);line-height:1.05;margin-top:12px;letter-spacing:-.015em}
+.contact p{color:#c9d3e0;margin-top:14px;max-width:48ch}
+.clist{display:grid}
+.crow{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.18)}
+.crow .k{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#a9b8cc}
+.crow .v{color:#fff;font-size:15.5px;text-align:right;overflow-wrap:anywhere}
+.crow a.v:hover{text-decoration:underline;text-underline-offset:3px}
+.copy{font-size:12.5px;padding:5px 10px;border:1px solid rgba(255,255,255,.35);border-radius:3px;color:#fff;margin-left:10px}
+.copy:hover{background:rgba(255,255,255,.1)}
+footer{background:var(--navy);color:#a9b8cc;font-size:13px;border-top:1px solid rgba(255,255,255,.12)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:22px;padding-bottom:26px}
+
+/* ---------- Modal ---------- */
+dialog{border:0;padding:0;background:none;color:var(--ink);max-width:none;max-height:none}
+dialog::backdrop{background:rgba(26,31,43,.45)}
+.modal{width:min(720px,calc(100vw - 32px));max-height:calc(100vh - 64px);margin:32px auto;background:var(--panel);border-top:3px solid var(--navy);display:flex;flex-direction:column;overflow:hidden;box-shadow:0 30px 80px -20px rgba(26,31,43,.4)}
+.modal-head{padding:28px 32px 22px;border-bottom:1px solid var(--rule);position:relative}
+.modal-head h3{font-family:var(--serif);font-weight:500;font-size:30px;line-height:1.15;margin:8px 0 4px}
+.modal-head .loc{color:var(--muted);font-size:14.5px}
+.x{position:absolute;right:18px;top:18px;width:34px;height:34px;display:grid;place-items:center;color:var(--muted);font-size:18px}
+.x:hover{color:var(--ink)}
+.modal-figs{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--rule)}
+.modal-figs div{padding:14px 32px}
+.modal-figs div+div{border-left:1px solid var(--rule-2)}
+.modal-figs b{display:block;font-size:18px;font-weight:600}
+.modal-figs span{font-size:12.5px;color:var(--muted)}
+.modal-body{padding:24px 32px;overflow:auto;flex:1;color:var(--ink-2);font-size:15px}
+.modal-body h5{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--brass);margin:22px 0 8px}
+.modal-body ul{margin-left:18px;display:grid;gap:6px}
+.modal-body li::marker{color:var(--muted)}
+.modal-actions{display:flex;gap:10px;flex-wrap:wrap;padding:18px 32px;border-top:1px solid var(--rule);background:var(--paper)}
+
+.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:100;font-size:13.5px;color:#fff;background:var(--ink);padding:10px 16px;border-radius:3px;display:none}
+.toast.show{display:block}
+
+.reveal{opacity:0;transform:translateY(12px);transition:opacity .7s ease,transform .7s ease}
+.reveal.vis{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+/* ---------- Responsive ---------- */
+@media (max-width:1060px){
+  .term{grid-template-columns:1fr}
+  .controls{position:static}
+}
+@media (max-width:960px){
+  .hero{grid-template-columns:1fr;gap:44px;padding-top:60px}
+  .metrics-strip{grid-template-columns:1fr 1fr}
+  .metrics-strip div:nth-child(3){padding-left:0;border-left:0}
+  .metrics-strip div:nth-child(-n+2){border-bottom:1px solid var(--rule)}
+  .deals{grid-template-columns:1fr 1fr}
+  .uw-intro,.two,.xp,.contact .wrap{grid-template-columns:1fr}
+  .xp{gap:48px}
+  .kpis{grid-template-columns:1fr 1fr}
+  .kpi:nth-child(3){border-left:0}
+  .kpi:nth-child(-n+2){border-bottom:1px solid var(--rule-2)}
+}
+@media (max-width:680px){
+  .wrap{padding:0 16px}
+  .top .wrap{height:60px;gap:16px}
+  .nav{gap:16px}
+  .nav a.opt{display:none}
+  .brand{font-size:19px}
+  .deals{grid-template-columns:1fr}
+  .card.feat{grid-column:span 1}
+  .card.feat h3{font-size:25px}
+  .metrics-strip b{font-size:36px}
+  .metrics-strip div{padding:20px 12px 20px 0}
+  .metrics-strip div+div{padding-left:12px}
+  .metrics-strip div:nth-child(3){padding-left:0}
+  .profile dl{grid-template-columns:110px 1fr}
+  .profile dt,.profile dd{padding:12px 16px}
+  .job{grid-template-columns:1fr;gap:4px}
+  .kpi{padding:16px}
+  .kpi .v{font-size:30px}
+  .box{padding:18px}
+  .g-dot b{top:22px;font-size:16px}
+  .g-tick.rate span{top:-22px}
+  .g-tick:not(.rate) span{top:42px}
+  .modal-head,.modal-body,.modal-actions{padding-left:20px;padding-right:20px}
+  .modal-figs div{padding:12px 20px}
+  section{padding-top:72px}
+  .contact .wrap{padding-top:56px;padding-bottom:56px;gap:36px}
+}
+@media (max-width:480px){.nav a:not(.keep){display:none}}
+
+/* ---------- Page additions ---------- */
+.deals{grid-template-columns:1fr 1fr}
+.card.feat{grid-column:1/-1}
+.back{display:inline-block;font-size:14px;font-weight:500;color:var(--navy);margin-bottom:24px}
+.back:hover{text-decoration:underline;text-underline-offset:3px}
+@media (max-width:680px){.deals{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a href="index.html" class="brand">Shaurya Kalbhor</a>
+    <nav class="nav" aria-label="Site">
+      <a href="index.html#deals" class="keep">All Deals</a>
+      <a href="index.html#experience">Experience</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <a class="btn btn-outline btn-sm" href="resume.pdf" target="_blank" rel="noopener">Resume</a>
+  </div>
+</header>
+
+<main>
+  <section id="underwriting" style="padding-top:48px">
+    <div class="wrap">
+      <a class="back" href="index.html#maple">← Back to Deal Summary</a>
+      <div class="sec-head">
+        <div><div class="label">Interactive Model · Industrial Value-Add</div><h2>2051 E Maple Ave, El Segundo</h2></div>
+        <div class="cta" style="margin-top:0">
+          <a class="btn btn-outline btn-sm" href="2051_E_Maple_Memo.pdf" target="_blank" rel="noopener">Investment Memo</a>
+          <a class="btn btn-outline btn-sm" href="2051_E_Maple_Underwriting.xlsx" download>Excel Model</a>
+        </div>
+      </div>
+      <div class="uw-intro">
+        <p>A vacant 1953 industrial building near LAX, listed at $10.8M. The plan is to buy it vacant, renovate it, sign a tenant on a five-year NNN lease and sell once the building is stabilized. Adjust the assumptions to see when that plan creates value. This calculator runs the same monthly cash flow as the Excel model, and the base case matches it exactly.</p>
+        <div class="facts">
+          <div><b>32,081 SF</b><span>Building, 1 Story</span></div>
+          <div><b>1.20 Acres</b><span>Land, M2 Zoning</span></div>
+          <div><b>$337 / SF</b><span>Asking Price</span></div>
+          <div><b>$1.98 / SF / Mo</b><span>Average NNN Comp Rent</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <form class="box controls" id="ctl" autocomplete="off" onsubmit="return false">
+          <div class="box-title"><h3>Assumptions</h3><span>Base Case Shown</span></div>
+          <div class="presets" id="presets"></div>
+          <div id="sliders"></div>
+          <div class="ctl-foot"><button type="button" class="linkbtn" id="reset">Reset to Base Case</button><span style="font-size:12px;color:var(--muted)">5-Year Hold · 55% LTC</span></div>
+        </form>
+
+        <div class="out">
+          <div class="kpis" id="kpis"></div>
+
+          <div class="box">
+            <div class="box-title"><h3>Does the Renovation Create Value?</h3><span>Yield on Cost vs. Exit Cap Rate</span></div>
+            <div class="gauge">
+              <div class="g-track"></div>
+              <div class="g-zone" id="gZone"></div>
+              <div class="g-tick" id="gCap"><span id="gCapL"></span></div>
+              <div class="g-tick rate" id="gRate"><span id="gRateL"></span></div>
+              <div class="g-dot" id="gDot"><b id="gDotL"></b></div>
+              <div class="g-axis"><span>4.0%</span><span>5.0%</span><span>6.0%</span><span>7.0%</span><span>8.0%</span><span>9.0%</span></div>
+            </div>
+            <p class="verdict" id="verdict" aria-live="polite"></p>
+            <p class="note" id="levNote"></p>
+          </div>
+
+          <div class="box maxbid">
+            <div class="box-title"><h3>What Should We Pay?</h3><span>Maximum Price at Target Yield on Cost</span></div>
+            <div class="price" id="maxP">—</div>
+            <p class="note" id="maxNote"></p>
+            <div class="bidbar"><div class="rail"></div><div class="seg" id="bidSeg"></div>
+              <div class="pin" id="pinMax"><span>Max Bid</span></div><div class="pin ask" id="pinAsk"><span>Ask $10.80M</span></div></div>
+          </div>
+
+          <div class="two">
+            <div class="box chart">
+              <div class="box-title"><h3>Levered Cash Flow</h3><span>By Year</span></div>
+              <svg id="cfChart" viewBox="0 0 520 250" role="img" aria-label="Annual levered cash flow"></svg>
+            </div>
+            <div class="box">
+              <div class="box-title"><h3>Sources &amp; Uses</h3><span id="suTot"></span></div>
+              <div class="su-stack" id="suStack"></div>
+              <div class="su" id="su"></div>
+            </div>
+          </div>
+
+          <div class="box">
+            <div class="box-title"><h3>Levered IRR Sensitivity</h3><span>Rent (Rows) × Purchase Price (Columns)</span></div>
+            <div class="scroll"><table class="sens" id="sens"></table></div>
+            <div class="legend"><span><i style="background:var(--good-soft)"></i>12% or Higher (Value-Add Target)</span><span><i style="background:var(--warn-soft)"></i>6% to 12%</span><span><i style="background:var(--bad-soft)"></i>Below 6%</span><span><i style="outline:2px solid var(--ink);outline-offset:-2px"></i>Closest to Current Inputs</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="cta" style="margin:40px 0 0">
+        <a class="btn btn-primary" href="index.html#deals">Back to All Deals</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer style="margin-top:96px"><div class="wrap"><span>© <span id="yr">2026</span> Shaurya Kalbhor</span><span>Figures are illustrative and based on public listing data from September 2026. Not investment advice.</span></div></footer>
+
+<script>
+const $ = s => document.querySelector(s);
+const pct = (v,d=1) => isFinite(v) ? (v*100).toFixed(d)+'%' : 'n/a';
+const mil = v => (v<0?'−':'')+'$'+(Math.abs(v)/1e6).toFixed(2)+'M';
+const usd = v => (v<0?'−$':'$')+Math.round(Math.abs(v)).toLocaleString('en-US');
+$('#yr').textContent = new Date().getFullYear();
+
+/* Same monthly logic as 2051_E_Maple_Underwriting.xlsx
+   (the base-case levered IRR grid matches the Excel Data Table). */
+function runModel(x){
+  const S=32081,k=0.02,cont=0.10,rm=6,g=0.035,term=60,free=3,ti=10,lc=0.05,tax=0.012,ins=0.75,mnt=0.75,
+        mg=0.03,res=0.15,vac=0.05,ltc=0.55,lf=0.01,hold=60,sc=0.02;
+  const P=x.price,rent=x.rent,ec=x.exitCap,ir=x.rate,lu=x.leaseUp,reno=x.renoPSF*S*(1+cont);
+  const LS=rm+lu+1,RS=LS+free;
+  const opex=(P*tax/S+ins+mnt)/12, LC=lc*rent*S*term, TI=ti*S, carry=opex*S*(LS-1);
+  const cost=P*(1+k)+reno+TI+LC+carry, loan=cost*ltc, fee=loan*lf;
+  const noi=m=>{ const ly=m<LS?0:Math.floor((m-LS)/12)+1; const r=m>=RS?rent*S*Math.pow(1+g,ly-1):0, re=m>=LS?opex*S:0; return (r+re)*(1-vac)-opex*S-r*mg };
+  const u=[-P*(1+k)], l=[u[0]+loan-fee];
+  for(let m=1;m<=hold;m++){
+    const cap=(m<=rm?-reno/rm:0)+(m===LS?-TI-LC:0)-res*S/12;
+    const s=m===hold?noi(m+1)*12/ec*(1-sc):0;
+    const cf=noi(m)+cap+s; u.push(cf); l.push(cf-loan*ir/12-(m===hold?loan:0));
+  }
+  const xirr=c=>{ const d0=Date.UTC(2027,8,1), t=c.map((_,i)=>(Date.UTC(2027,8+i,1)-d0)/864e5/365);
+    let lo=-0.99,hi=3,mid=0; for(let it=0;it<200;it++){ mid=(lo+hi)/2; let v=0; for(let i=0;i<c.length;i++) v+=c[i]/Math.pow(1+mid,t[i]); if(v>0) lo=mid; else hi=mid } return mid };
+  const sum=a=>a.reduce((p,q)=>p+q,0);
+  const mult=a=>{ let pos=0,neg=0; a.forEach(v=>{ if(v>0) pos+=v; else neg-=v }); return pos/neg };
+  let cum=0,minCum=0; l.forEach(v=>{ cum+=v; if(cum<minCum) minCum=cum });
+  const stabNOI=noi(RS)*12, yoc=stabNOI/cost;
+  const I=ins+mnt, N=LS-1, y=x.target;
+  const maxP=(12*rent*S*(1-vac-mg)-vac*I*S-y*(reno+TI+LC+I*S*N/12))/(y*(1+k+tax*N/12)+vac*tax);
+  const years=[l[0]]; for(let yr=1;yr<=5;yr++) years.push(sum(l.slice(12*(yr-1)+1,12*yr+1)));
+  return {cost,loan,fee,stabNOI,yoc,spread:yoc-ec,uIRR:xirr(u),lIRR:xirr(l),uEM:mult(u),lEM:mult(l),peakEq:-minCum,
+    dscr:stabNOI/(loan*ir),maxPrice:maxP,years,
+    uses:[['Purchase Price',P],['Closing Costs',P*k],['Renovation + Contingency',reno],['Tenant Improvements',TI],['Leasing Commissions',LC],['Carry While Vacant',carry],['Loan Fee',fee]]};
+}
+
+const FIELDS = [
+  {id:'price',   label:'Purchase Price',                min:7500000, max:11500000, step:100000, v:10800000, f:v=>mil(v), hint:'Listed at $10.8M'},
+  {id:'rent',    label:'Renovated Rent ($/SF/Mo, NNN)', min:1.60, max:2.60, step:0.05, v:2.00, f:v=>'$'+v.toFixed(2), hint:'Three NNN comps average $1.98'},
+  {id:'exitCap', label:'Exit Cap Rate',                 min:0.050, max:0.070, step:0.0025, v:0.06, f:v=>pct(v,2), hint:'LA industrial: mid-5% to 6%'},
+  {id:'renoPSF', label:'Renovation Cost ($/SF)',        min:30, max:100, step:5, v:50, f:v=>'$'+v, hint:'Plus a 10% contingency'},
+  {id:'leaseUp', label:'Lease-Up After Renovation',     min:3, max:12, step:1, v:6, f:v=>v+' Months', hint:'Three nearby comps are vacant'},
+  {id:'rate',    label:'Loan Interest Rate',            min:0.05, max:0.08, step:0.00125, v:0.0625, f:v=>pct(v,2), hint:'55% loan-to-cost, interest-only'},
+  {sep:true},
+  {id:'target',  label:'Target Yield on Cost',          min:0.055, max:0.08, step:0.0025, v:0.065, f:v=>pct(v,2), hint:'About 50 bps over the exit cap rate'},
+];
+const PRESETS = [
+  ['Base Case', {}],
+  ['Upside: $2.30 Rent', {rent:2.30, exitCap:0.0575, leaseUp:4}],
+  ['Downside', {rent:1.85, exitCap:0.0650, leaseUp:12, renoPSF:65}],
+  ['Bid at $8.2M', {price:8200000}],
+];
+const ASK = 10800000;
+const state = {}; FIELDS.forEach(f=>{ if(!f.sep) state[f.id]=f.v });
+
+function buildControls(){
+  $('#sliders').innerHTML = FIELDS.map(f => f.sep ? '<div class="ctl-sep"></div>' :
+    `<div class="ctl"><div class="ctl-head"><label for="in-${f.id}">${f.label}</label><output id="o-${f.id}"></output></div>
+     <input type="range" id="in-${f.id}" min="${f.min}" max="${f.max}" step="${f.step}" value="${f.v}"><div class="hint">${f.hint}</div></div>`).join('');
+  FIELDS.forEach(f => { if (f.sep) return; $('#in-'+f.id).addEventListener('input', e => { state[f.id] = +e.target.value; syncUI(); update() }) });
+  $('#presets').innerHTML = PRESETS.map((p,i)=>`<button type="button" data-i="${i}">${p[0]}</button>`).join('');
+  $('#presets').querySelectorAll('button').forEach(b => b.onclick = () => applyPreset(PRESETS[+b.dataset.i][1]));
+  $('#reset').onclick = () => applyPreset({});
+}
+function applyPreset(p){ FIELDS.forEach(f=>{ if(!f.sep) state[f.id] = p[f.id] ?? f.v }); syncUI(); update() }
+function syncUI(){
+  FIELDS.forEach(f => { if (f.sep) return; const el = $('#in-'+f.id); el.value = state[f.id];
+    el.style.setProperty('--fill', ((state[f.id]-f.min)/(f.max-f.min)*100)+'%'); $('#o-'+f.id).textContent = f.f(state[f.id]) });
+}
+
+const LO=0.04, HI=0.09, gpos = v => Math.max(0,Math.min(1,(v-LO)/(HI-LO)))*100;
+function update(){
+  const x = state, r = runModel(x);
+  const cls = (v,g,b) => v>=g ? 'good' : v<b ? 'bad' : 'warn';
+  const kpi = (k,v,s,c='') => `<div class="kpi"><div class="k">${k}</div><div class="v ${c}">${v}</div><div class="s">${s}</div></div>`;
+  $('#kpis').innerHTML =
+    kpi('Levered IRR', pct(r.lIRR), `${r.lEM.toFixed(2)}x equity multiple`, cls(r.lIRR,.12,.06)) +
+    kpi('Unlevered IRR', pct(r.uIRR), `${r.uEM.toFixed(2)}x equity multiple`, cls(r.uIRR,.08,.05)) +
+    kpi('Yield on Cost', pct(r.yoc,2), `${r.spread>=0?'+':''}${Math.round(r.spread*1e4)} bps vs. exit cap rate`, r.spread>=.005?'good':r.spread<0?'bad':'warn') +
+    kpi('DSCR', r.dscr.toFixed(2)+'x', `Peak equity of ${mil(r.peakEq)}`, cls(r.dscr,1.25,1));
+
+  $('#gDot').style.left = gpos(r.yoc)+'%'; $('#gDotL').textContent = pct(r.yoc,2); $('#gDot').classList.toggle('bad', r.yoc < x.exitCap);
+  $('#gCap').style.left = gpos(x.exitCap)+'%'; $('#gCapL').textContent = 'Exit Cap '+pct(x.exitCap,2);
+  $('#gRate').style.left = gpos(x.rate)+'%'; $('#gRateL').textContent = 'Loan Rate '+pct(x.rate,2);
+  $('#gZone').style.left = gpos(x.exitCap)+'%'; $('#gZone').style.width = (100-gpos(x.exitCap))+'%';
+  const bps = Math.round(r.spread*1e4);
+  $('#verdict').innerHTML = bps < 0
+    ? `<strong style="color:var(--bad);font-weight:600">No.</strong> The renovated building yields ${pct(r.yoc,2)} on cost, ${-bps} bps below the exit cap rate, so it would sell for less than it cost to create.`
+    : bps < 50
+    ? `<strong style="color:var(--warn);font-weight:600">Marginally.</strong> The yield on cost beats the exit cap rate by only ${bps} bps, a thin cushion for renovation and lease-up risk.`
+    : `<strong style="color:var(--good);font-weight:600">Yes.</strong> The yield on cost clears the exit cap rate by ${bps} bps, enough margin to compensate for the risk of renovating and re-leasing.`;
+  $('#levNote').textContent = r.yoc < x.rate
+    ? `Negative leverage: the loan costs ${pct(x.rate,2)}, but the property yields only ${pct(r.yoc,2)}, so borrowing lowers the return on equity.`
+    : `Positive leverage: the property yields more than the ${pct(x.rate,2)} cost of debt, so borrowing raises the return on equity.`;
+
+  $('#maxP').textContent = usd(r.maxPrice);
+  const d = r.maxPrice/ASK - 1;
+  $('#maxNote').textContent = `${Math.abs(Math.round(d*100))}% ${d<0?'below':'above'} the $10.8M asking price ($${Math.round(r.maxPrice/32081)}/SF), to reach a ${pct(x.target,2)} yield on cost at a $${x.rent.toFixed(2)} rent.`;
+  const bmin=6e6, bmax=13e6, bp=v=>Math.max(0,Math.min(100,(v-bmin)/(bmax-bmin)*100));
+  $('#pinMax').style.left = bp(r.maxPrice)+'%'; $('#pinAsk').style.left = bp(ASK)+'%';
+  $('#bidSeg').style.left = '0%'; $('#bidSeg').style.width = bp(r.maxPrice)+'%';
+  $('#pinMax span').textContent = 'Max Bid '+mil(r.maxPrice);
+
+  const total = r.uses.reduce((a,[,v])=>a+v,0);
+  const cols = ['#1f3a5f','#4a6a93','#a8823f','#c9ae7b','#7d8796','#b7bec8','#dcd6ca'];
+  $('#suStack').innerHTML = r.uses.map(([,v],i)=>`<i style="width:${v/total*100}%;background:${cols[i]}"></i>`).join('');
+  $('#su').innerHTML = r.uses.map(([k,v],i)=>`<div><span><i style="display:inline-block;width:9px;height:9px;background:${cols[i]};margin-right:9px"></i>${k}</span><span>${mil(v)}</span></div>`).join('')
+    + `<div class="tot"><span>Total Uses</span><span>${mil(total)}</span></div>`
+    + `<div><span>Loan (55% LTC)</span><span>${mil(r.loan)}</span></div><div><span>Equity at Close</span><span>${mil(total-r.loan)}</span></div>`;
+  $('#suTot').textContent = '$'+Math.round(total/32081)+'/SF All-In';
+
+  cfChart(r.years);
+  sensTable();
+}
+
+function cfChart(ys){
+  const W=520,H=250,L=4,R=4,T=24,B=28, ih=H-T-B;
+  const maxv=Math.max(0,...ys), minv=Math.min(0,...ys), span=(maxv-minv)||1, y=v=>T+(maxv-v)/span*ih;
+  const step=(W-L-R)/ys.length, bw=step*.52;
+  let s='';
+  [0,.25,.5,.75,1].forEach(t=>{ const yy=T+t*ih; s+=`<line x1="${L}" x2="${W-R}" y1="${yy}" y2="${yy}" stroke="#ece8df"/>` });
+  ys.forEach((v,i)=>{
+    const x=L+i*step+(step-bw)/2, top=y(Math.max(v,0)), h=Math.max(1.5,Math.abs(y(v)-y(0)));
+    s+=`<rect x="${x}" y="${top}" width="${bw}" height="${h}" fill="${v<0?'#a8433d':'#1f3a5f'}"><title>${mil(v)}</title></rect>`;
+    const ly = v<0 ? y(v)+14 : top-7;
+    s+=`<text class="lbl" x="${x+bw/2}" y="${ly}" text-anchor="middle">${mil(v)}</text>`;
+    s+=`<text x="${x+bw/2}" y="${H-6}" text-anchor="middle">${i===0?'Closing':'Year '+i}</text>`;
+  });
+  s+=`<line x1="${L}" x2="${W-R}" y1="${y(0)}" y2="${y(0)}" stroke="#1a1f2b"/>`;
+  $('#cfChart').innerHTML = s;
+}
+
+function sensTable(){
+  const prices=[8.5e6,9e6,9.5e6,1e7,10.8e6], rents=[1.8,1.9,2.0,2.1,2.2,2.3];
+  const nearest=(arr,v)=>arr.reduce((a,b)=>Math.abs(b-v)<Math.abs(a-v)?b:a);
+  const np=nearest(prices,state.price), nr=nearest(rents,state.rent);
+  let t=`<thead><tr><th class="rh">Rent</th>${prices.map(p=>`<th>$${(p/1e6).toFixed(1)}M</th>`).join('')}</tr></thead><tbody>`;
+  rents.forEach(rt=>{
+    t+=`<tr><th class="rh">$${rt.toFixed(2)}</th>`;
+    prices.forEach(p=>{
+      const v=runModel({...state,price:p,rent:rt}).lIRR;
+      const [bg,fg] = v>=.12 ? ['var(--good-soft)','var(--good)'] : v<.06 ? ['var(--bad-soft)','var(--bad)'] : ['var(--warn-soft)','var(--warn)'];
+      t+=`<td class="${p===np&&rt===nr?'me':''}" style="background:${bg};color:${fg}">${pct(v)}</td>`;
+    });
+    t+='</tr>';
+  });
+  $('#sens').innerHTML = t+'</tbody>';
+}
+
+buildControls(); syncUI(); update();
+</script>
+</body>
+</html>
